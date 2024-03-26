@@ -1,0 +1,13 @@
+generatorName: python
+outputDir: ./generated-code/python-client
+packageName: trieve_python_client
+packageVersion: 0.5.0
+
+additionalProperties:
+  projectName: trieve_python_client
+  packageUrl: "https://trieve.ai"
+  packageLicense: "MIT"
+  packageDescription: "Python client for Trieve API generated from its OpenAPI specification using openapi-generator."
+  packageAuthor: "Trieve"
+  packageAuthorEmail: "developers@trieve.ai"
+  packageVersion: "0.5.0"

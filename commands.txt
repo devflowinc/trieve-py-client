@@ -1,0 +1,4 @@
+PYTHON COMMAND
+
+npx @openapitools/openapi-generator-cli generate -i openapi.json -g python -c ./openapi-generator.yaml -o ./ --skip-validate-spec
+
