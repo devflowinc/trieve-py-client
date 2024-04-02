@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **group_id** | **str** |  | 
+**group_tracking_id** | **str** |  | [optional] 
 **metadata** | [**List[ScoreChunkDTO]**](ScoreChunkDTO.md) |  | 
 
 ## Example

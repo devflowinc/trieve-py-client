@@ -1,6 +1,6 @@
 # trieve_python_client.ChunkApi
 
-All URIs are relative to *http://localhost:8090*
+All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -35,10 +35,10 @@ from trieve_python_client.models.return_queued_chunk import ReturnQueuedChunk
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -119,10 +119,10 @@ from trieve_python_client.models.suggested_queries_response import SuggestedQuer
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -200,10 +200,10 @@ import trieve_python_client
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -279,10 +279,10 @@ import trieve_python_client
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -359,10 +359,10 @@ from trieve_python_client.models.generate_chunks_request import GenerateChunksRe
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -441,10 +441,10 @@ from trieve_python_client.models.chunk_metadata import ChunkMetadata
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -523,10 +523,10 @@ from trieve_python_client.models.chunk_metadata import ChunkMetadata
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recommended_chunks**
-> List[ChunkMetadataWithFileData] get_recommended_chunks(tr_dataset, recommend_chunks_request)
+> RecommendChunksResponseTypes get_recommended_chunks(tr_dataset, recommend_chunks_request)
 
 Get Recommended Chunks
 
@@ -601,15 +601,15 @@ Get Recommended Chunks  Get recommendations of chunks similar to the chunks in t
 
 ```python
 import trieve_python_client
-from trieve_python_client.models.chunk_metadata_with_file_data import ChunkMetadataWithFileData
 from trieve_python_client.models.recommend_chunks_request import RecommendChunksRequest
+from trieve_python_client.models.recommend_chunks_response_types import RecommendChunksResponseTypes
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[ChunkMetadataWithFileData]**](ChunkMetadataWithFileData.md)
+[**RecommendChunksResponseTypes**](RecommendChunksResponseTypes.md)
 
 ### Authorization
 
@@ -666,13 +666,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | JSON response payload containing chunks with scores which are similar to those in the request body |  -  |
+**200** | Chunks with embedding vectors which are similar to those in the request body |  -  |
 **400** | Service error relating to to getting similar chunks |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_chunk**
-> SearchChunkQueryResponseBody search_chunk(tr_dataset, search_chunk_data)
+> SearchChunkResponseTypes search_chunk(tr_dataset, search_chunk_data)
 
 Search
 
@@ -685,14 +685,14 @@ Search  This route provides the primary search functionality for the API. It can
 ```python
 import trieve_python_client
 from trieve_python_client.models.search_chunk_data import SearchChunkData
-from trieve_python_client.models.search_chunk_query_response_body import SearchChunkQueryResponseBody
+from trieve_python_client.models.search_chunk_response_types import SearchChunkResponseTypes
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -734,7 +734,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchChunkQueryResponseBody**](SearchChunkQueryResponseBody.md)
+[**SearchChunkResponseTypes**](SearchChunkResponseTypes.md)
 
 ### Authorization
 
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | chunks which are similar to the embedding vector of the search query |  -  |
+**200** | Chunks with embedding vectors which are similar to those in the request body |  -  |
 **400** | Service error relating to searching |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -771,10 +771,10 @@ from trieve_python_client.models.update_chunk_data import UpdateChunkData
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -851,10 +851,10 @@ from trieve_python_client.models.update_chunk_by_tracking_id_data import UpdateC
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters

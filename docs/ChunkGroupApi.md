@@ -1,6 +1,6 @@
 # trieve_python_client.ChunkGroupApi
 
-All URIs are relative to *http://localhost:8090*
+All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -40,10 +40,10 @@ from trieve_python_client.models.add_chunk_to_group_data import AddChunkToGroupD
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -122,10 +122,10 @@ from trieve_python_client.models.add_chunk_to_group_data import AddChunkToGroupD
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -205,10 +205,10 @@ from trieve_python_client.models.create_chunk_group_data import CreateChunkGroup
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -286,10 +286,10 @@ import trieve_python_client
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -367,10 +367,10 @@ import trieve_python_client
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -447,10 +447,10 @@ from trieve_python_client.models.chunk_group import ChunkGroup
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -529,10 +529,10 @@ from trieve_python_client.models.bookmark_data import BookmarkData
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -613,10 +613,10 @@ from trieve_python_client.models.bookmark_data import BookmarkData
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -697,10 +697,10 @@ from trieve_python_client.models.chunk_group import ChunkGroup
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -780,10 +780,10 @@ from trieve_python_client.models.get_groups_for_chunks_data import GetGroupsForC
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -846,7 +846,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recommended_groups**
-> List[GroupScoreChunkDTO] get_recommended_groups(tr_dataset, reccomend_group_chunks_request)
+> RecommendGroupChunkResponseTypes get_recommended_groups(tr_dataset, reccomend_group_chunks_request)
 
 Get Recommended Groups
 
@@ -858,15 +858,15 @@ Get Recommended Groups  Route to get recommended groups. This route will return 
 
 ```python
 import trieve_python_client
-from trieve_python_client.models.group_score_chunk_dto import GroupScoreChunkDTO
 from trieve_python_client.models.reccomend_group_chunks_request import ReccomendGroupChunksRequest
+from trieve_python_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -908,7 +908,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[GroupScoreChunkDTO]**](GroupScoreChunkDTO.md)
+[**RecommendGroupChunkResponseTypes**](RecommendGroupChunkResponseTypes.md)
 
 ### Authorization
 
@@ -923,7 +923,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | JSON response payload containing chunks with scores which are similar to those in the request body |  -  |
+**200** | JSON body representing the groups which are similar to the groups in the request |  -  |
 **400** | Service error relating to to getting similar chunks |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -945,10 +945,10 @@ from trieve_python_client.models.group_data import GroupData
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1029,10 +1029,10 @@ from trieve_python_client.models.create_chunk_group_data import CreateChunkGroup
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1095,7 +1095,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_over_groups**
-> SearchOverGroupsResponseBody search_over_groups(search_over_groups_data)
+> SearchOverGroupsResponseTypes search_over_groups(tr_dataset, search_over_groups_data)
 
 Search Over Groups
 
@@ -1103,30 +1103,42 @@ Search Over Groups  This route allows you to get groups as results instead of ch
 
 ### Example
 
+* Api Key Authentication (ApiKey):
 
 ```python
 import trieve_python_client
 from trieve_python_client.models.search_over_groups_data import SearchOverGroupsData
-from trieve_python_client.models.search_over_groups_response_body import SearchOverGroupsResponseBody
+from trieve_python_client.models.search_over_groups_response_types import SearchOverGroupsResponseTypes
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with trieve_python_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     search_over_groups_data = trieve_python_client.SearchOverGroupsData() # SearchOverGroupsData | JSON request payload to semantically search over groups
 
     try:
         # Search Over Groups
-        api_response = api_instance.search_over_groups(search_over_groups_data)
+        api_response = api_instance.search_over_groups(tr_dataset, search_over_groups_data)
         print("The response of ChunkGroupApi->search_over_groups:\n")
         pprint(api_response)
     except Exception as e:
@@ -1140,15 +1152,16 @@ with trieve_python_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tr_dataset** | **str**| The dataset id to use for the request | 
  **search_over_groups_data** | [**SearchOverGroupsData**](SearchOverGroupsData.md)| JSON request payload to semantically search over groups | 
 
 ### Return type
 
-[**SearchOverGroupsResponseBody**](SearchOverGroupsResponseBody.md)
+[**SearchOverGroupsResponseTypes**](SearchOverGroupsResponseTypes.md)
 
 ### Authorization
 
-No authorization required
+[ApiKey](../README.md#ApiKey)
 
 ### HTTP request headers
 
@@ -1165,7 +1178,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_within_group**
-> SearchGroupsResult search_within_group(tr_dataset, search_within_group_data)
+> SearchWithinGroupResponseTypes search_within_group(tr_dataset, search_within_group_data)
 
 Search Within Group
 
@@ -1177,15 +1190,15 @@ Search Within Group  This route allows you to search only within a group. This i
 
 ```python
 import trieve_python_client
-from trieve_python_client.models.search_groups_result import SearchGroupsResult
 from trieve_python_client.models.search_within_group_data import SearchWithinGroupData
+from trieve_python_client.models.search_within_group_response_types import SearchWithinGroupResponseTypes
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1227,7 +1240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchGroupsResult**](SearchGroupsResult.md)
+[**SearchWithinGroupResponseTypes**](SearchWithinGroupResponseTypes.md)
 
 ### Authorization
 
@@ -1264,10 +1277,10 @@ from trieve_python_client.models.update_chunk_group_data import UpdateChunkGroup
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1344,10 +1357,10 @@ from trieve_python_client.models.update_group_by_tracking_id_data import UpdateG
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters

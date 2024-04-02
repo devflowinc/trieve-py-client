@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **negative_group_tracking_ids** | **List[str]** | The  ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups. | [optional] 
 **positive_group_ids** | **List[str]** | The  ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups. | [optional] 
 **positive_group_tracking_ids** | **List[str]** | The  ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups. | [optional] 
+**slim_chunks** | **bool** | Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false. | [optional] 
 
 ## Example
 

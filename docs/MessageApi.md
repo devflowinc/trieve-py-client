@@ -1,6 +1,6 @@
 # trieve_python_client.MessageApi
 
-All URIs are relative to *http://localhost:8090*
+All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,10 +27,10 @@ from trieve_python_client.models.create_message_data import CreateMessageData
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -109,10 +109,10 @@ from trieve_python_client.models.edit_message_data import EditMessageData
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -189,10 +189,10 @@ from trieve_python_client.models.message import Message
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -271,10 +271,10 @@ from trieve_python_client.models.regenerate_message_data import RegenerateMessag
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters

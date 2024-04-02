@@ -1,6 +1,6 @@
 # trieve_python_client.DatasetApi
 
-All URIs are relative to *http://localhost:8090*
+All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,10 +30,10 @@ from trieve_python_client.models.dataset import Dataset
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -112,10 +112,10 @@ from trieve_python_client.models.delete_dataset_request import DeleteDatasetRequ
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -192,10 +192,10 @@ from trieve_python_client.models.client_dataset_configuration import ClientDatas
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -272,10 +272,10 @@ from trieve_python_client.models.dataset import Dataset
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -356,10 +356,10 @@ from trieve_python_client.models.dataset_and_usage import DatasetAndUsage
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -439,10 +439,10 @@ from trieve_python_client.models.update_dataset_request import UpdateDatasetRequ
 from trieve_python_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8090
+# Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trieve_python_client.Configuration(
-    host = "http://localhost:8090"
+    host = "https://api.trieve.ai"
 )
 
 # The client must configure the authentication and authorization parameters

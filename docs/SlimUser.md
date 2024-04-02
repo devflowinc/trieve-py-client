@@ -10,9 +10,6 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **orgs** | [**List[Organization]**](Organization.md) |  | 
 **user_orgs** | [**List[UserOrganization]**](UserOrganization.md) |  | 
-**username** | **str** |  | [optional] 
-**visible_email** | **bool** |  | 
-**website** | **str** |  | [optional] 
 
 ## Example
 
