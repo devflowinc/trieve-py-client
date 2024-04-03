@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.search_over_groups_response_types import SearchOverGroupsResponseTypes
+from trieve_py_client.models.search_over_groups_response_types import SearchOverGroupsResponseTypes
 
 # TODO update the JSON string below
 json = "{}"

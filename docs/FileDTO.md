@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.file_dto import FileDTO
+from trieve_py_client.models.file_dto import FileDTO
 
 # TODO update the JSON string below
 json = "{}"

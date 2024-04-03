@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.dataset_usage_count import DatasetUsageCount
+from trieve_py_client.models.dataset_usage_count import DatasetUsageCount
 
 # TODO update the JSON string below
 json = "{}"

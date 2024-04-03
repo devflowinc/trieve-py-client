@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.group_score_chunk_dto import GroupScoreChunkDTO
+from trieve_py_client.models.group_score_chunk_dto import GroupScoreChunkDTO
 
 # TODO update the JSON string below
 json = "{}"

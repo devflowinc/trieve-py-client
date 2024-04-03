@@ -1,4 +1,4 @@
-# trieve_python_client.ChunkApi
+# trieve_py_client.ChunkApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -29,15 +29,15 @@ Create or Upsert Chunk or Chunks  Create a new chunk. If the chunk has the same 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.create_chunk_data import CreateChunkData
-from trieve_python_client.models.return_queued_chunk import ReturnQueuedChunk
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.create_chunk_data import CreateChunkData
+from trieve_py_client.models.return_queued_chunk import ReturnQueuedChunk
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -53,11 +53,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    create_chunk_data = trieve_python_client.CreateChunkData() # CreateChunkData | JSON request payload to create a new chunk (chunk)
+    create_chunk_data = trieve_py_client.CreateChunkData() # CreateChunkData | JSON request payload to create a new chunk (chunk)
 
     try:
         # Create or Upsert Chunk or Chunks
@@ -113,15 +113,15 @@ Generate suggested queries  This endpoint will generate 3 suggested queries base
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.suggested_queries_request import SuggestedQueriesRequest
-from trieve_python_client.models.suggested_queries_response import SuggestedQueriesResponse
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.suggested_queries_request import SuggestedQueriesRequest
+from trieve_py_client.models.suggested_queries_response import SuggestedQueriesResponse
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -137,11 +137,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    suggested_queries_request = trieve_python_client.SuggestedQueriesRequest() # SuggestedQueriesRequest | JSON request payload to get alternative suggested queries
+    suggested_queries_request = trieve_py_client.SuggestedQueriesRequest() # SuggestedQueriesRequest | JSON request payload to get alternative suggested queries
 
     try:
         # Generate suggested queries
@@ -196,13 +196,13 @@ Delete Chunk  Delete a chunk by its id. If deleting a root chunk which has a col
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -218,9 +218,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     chunk_id = 'chunk_id_example' # str | Id of the chunk you want to fetch.
 
@@ -275,13 +275,13 @@ Delete Chunk By Tracking Id  Delete a chunk by tracking_id. This is useful for w
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -297,9 +297,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | tracking_id of the chunk you want to delete
 
@@ -354,14 +354,14 @@ RAG on Specified Chunks  This endpoint exists as an alternative to the topic+mes
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.generate_chunks_request import GenerateChunksRequest
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.generate_chunks_request import GenerateChunksRequest
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -377,11 +377,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    generate_chunks_request = trieve_python_client.GenerateChunksRequest() # GenerateChunksRequest | JSON request payload to perform RAG on some chunks (chunks)
+    generate_chunks_request = trieve_py_client.GenerateChunksRequest() # GenerateChunksRequest | JSON request payload to perform RAG on some chunks (chunks)
 
     try:
         # RAG on Specified Chunks
@@ -436,14 +436,14 @@ Get Chunk By Id  Get a singular chunk by id.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.chunk_metadata import ChunkMetadata
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.chunk_metadata import ChunkMetadata
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -459,9 +459,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     chunk_id = 'chunk_id_example' # str | Id of the chunk you want to fetch.
 
@@ -518,14 +518,14 @@ Get Chunk By Tracking Id  Get a singular chunk by tracking_id. This is useful fo
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.chunk_metadata import ChunkMetadata
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.chunk_metadata import ChunkMetadata
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -541,9 +541,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | tracking_id of the chunk you want to fetch
 
@@ -600,15 +600,15 @@ Get Recommended Chunks  Get recommendations of chunks similar to the chunks in t
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.recommend_chunks_request import RecommendChunksRequest
-from trieve_python_client.models.recommend_chunks_response_types import RecommendChunksResponseTypes
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.recommend_chunks_request import RecommendChunksRequest
+from trieve_py_client.models.recommend_chunks_response_types import RecommendChunksResponseTypes
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -624,11 +624,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    recommend_chunks_request = trieve_python_client.RecommendChunksRequest() # RecommendChunksRequest | JSON request payload to get recommendations of chunks similar to the chunks in the request
+    recommend_chunks_request = trieve_py_client.RecommendChunksRequest() # RecommendChunksRequest | JSON request payload to get recommendations of chunks similar to the chunks in the request
 
     try:
         # Get Recommended Chunks
@@ -683,15 +683,15 @@ Search  This route provides the primary search functionality for the API. It can
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.search_chunk_data import SearchChunkData
-from trieve_python_client.models.search_chunk_response_types import SearchChunkResponseTypes
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.search_chunk_data import SearchChunkData
+from trieve_py_client.models.search_chunk_response_types import SearchChunkResponseTypes
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -707,11 +707,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    search_chunk_data = trieve_python_client.SearchChunkData() # SearchChunkData | JSON request payload to semantically search for chunks (chunks)
+    search_chunk_data = trieve_py_client.SearchChunkData() # SearchChunkData | JSON request payload to semantically search for chunks (chunks)
 
     try:
         # Search
@@ -766,14 +766,14 @@ Update Chunk  Update a chunk. If you try to change the tracking_id of the chunk 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.update_chunk_data import UpdateChunkData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.update_chunk_data import UpdateChunkData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -789,11 +789,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    update_chunk_data = trieve_python_client.UpdateChunkData() # UpdateChunkData | JSON request payload to update a chunk (chunk)
+    update_chunk_data = trieve_py_client.UpdateChunkData() # UpdateChunkData | JSON request payload to update a chunk (chunk)
 
     try:
         # Update Chunk
@@ -846,14 +846,14 @@ Update Chunk By Tracking Id  Update a chunk by tracking_id. This is useful for w
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.update_chunk_by_tracking_id_data import UpdateChunkByTrackingIdData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.update_chunk_by_tracking_id_data import UpdateChunkByTrackingIdData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -869,11 +869,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkApi(api_client)
+    api_instance = trieve_py_client.ChunkApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    update_chunk_by_tracking_id_data = trieve_python_client.UpdateChunkByTrackingIdData() # UpdateChunkByTrackingIdData | JSON request payload to update a chunk by tracking_id (chunks)
+    update_chunk_by_tracking_id_data = trieve_py_client.UpdateChunkByTrackingIdData() # UpdateChunkByTrackingIdData | JSON request payload to update a chunk by tracking_id (chunks)
 
     try:
         # Update Chunk By Tracking Id

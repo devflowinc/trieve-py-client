@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.5.5"
+    "version": "0.5.7"
   },
   "servers": [
     {
@@ -1884,58 +1884,6 @@
             ]
           }
         ]
-      },
-      "delete": {
-        "tags": [
-          "dataset"
-        ],
-        "summary": "Delete Dataset",
-        "description": "Delete Dataset\n\nDelete a dataset. The auth'ed user must be an owner of the organization to delete a dataset.",
-        "operationId": "delete_dataset",
-        "parameters": [
-          {
-            "name": "TR-Organization",
-            "in": "header",
-            "description": "The organization id to use for the request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "JSON request payload to delete a dataset",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteDatasetRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Dataset deleted successfully"
-          },
-          "400": {
-            "description": "Service error relating to deleting the dataset",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponseBody"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": [
-              "owner"
-            ]
-          }
-        ]
       }
     },
     "/api/dataset/envs": {
@@ -2259,6 +2207,57 @@
           {
             "ApiKey": [
               "admin"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Delete Dataset",
+        "description": "Delete Dataset\n\nDelete a dataset. The auth'ed user must be an owner of the organization to delete a dataset.",
+        "operationId": "delete_dataset",
+        "parameters": [
+          {
+            "name": "TR-Organization",
+            "in": "header",
+            "description": "The organization id to use for the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "description": "The id of the dataset you want to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Dataset deleted successfully"
+          },
+          "400": {
+            "description": "Service error relating to deleting the dataset",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": [
+              "owner"
             ]
           }
         ]
@@ -3479,58 +3478,6 @@
             ]
           }
         ]
-      },
-      "delete": {
-        "tags": [
-          "topic"
-        ],
-        "summary": "Delete Topic",
-        "description": "Delete Topic\n\nDelete an existing chat topic. When a topic is deleted, all associated chat messages are also deleted.",
-        "operationId": "delete_topic",
-        "parameters": [
-          {
-            "name": "TR-Dataset",
-            "in": "header",
-            "description": "The dataset id to use for the request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "JSON request payload to delete a chat topic",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteTopicData"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Confirmation that the topic was deleted"
-          },
-          "400": {
-            "description": "Service error relating to topic deletion",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponseBody"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": [
-              "readonly"
-            ]
-          }
-        ]
       }
     },
     "/api/topic/user/{user_id}": {
@@ -3578,6 +3525,59 @@
           },
           "400": {
             "description": "Service error relating to topic get",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": [
+              "readonly"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/topic/{topic_id}": {
+      "delete": {
+        "tags": [
+          "topic"
+        ],
+        "summary": "Delete Topic",
+        "description": "Delete Topic\n\nDelete an existing chat topic. When a topic is deleted, all associated chat messages are also deleted.",
+        "operationId": "delete_topic",
+        "parameters": [
+          {
+            "name": "TR-Dataset",
+            "in": "header",
+            "description": "The dataset id to use for the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "topic_id",
+            "in": "path",
+            "description": "The id of the topic you want to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Confirmation that the topic was deleted"
+          },
+          "400": {
+            "description": "Service error relating to topic deletion",
             "content": {
               "application/json": {
                 "schema": {
@@ -3646,7 +3646,7 @@
         ]
       }
     },
-    "/api/user/delete_api_key": {
+    "/api/user/delete_api_key/{api_key_id}": {
       "delete": {
         "tags": [
           "user"
@@ -3654,17 +3654,18 @@
         "summary": "Delete User Api Key",
         "description": "Delete User Api Key\n\nDelete an api key for the auth'ed user.",
         "operationId": "delete_user_api_key",
-        "requestBody": {
-          "description": "JSON request payload to delete a user api key",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteUserApiKeyRequest"
-              }
+        "parameters": [
+          {
+            "name": "api_key_id",
+            "in": "path",
+            "description": "The id of the api key to delete",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
-          },
-          "required": true
-        },
+          }
+        ],
         "responses": {
           "200": {
             "description": "JSON body representing the api_key for the user",
@@ -4844,19 +4845,6 @@
           "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3"
         }
       },
-      "DeleteDatasetRequest": {
-        "type": "object",
-        "required": [
-          "dataset_id"
-        ],
-        "properties": {
-          "dataset_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "The id of the dataset you want to delete."
-          }
-        }
-      },
       "DeleteTopicData": {
         "type": "object",
         "required": [
@@ -5578,23 +5566,35 @@
         "type": "object",
         "properties": {
           "gt": {
-            "type": "number",
-            "format": "double",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RangeCondition"
+              }
+            ],
             "nullable": true
           },
           "gte": {
-            "type": "number",
-            "format": "double",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RangeCondition"
+              }
+            ],
             "nullable": true
           },
           "lt": {
-            "type": "number",
-            "format": "double",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RangeCondition"
+              }
+            ],
             "nullable": true
           },
           "lte": {
-            "type": "number",
-            "format": "double",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RangeCondition"
+              }
+            ],
             "nullable": true
           }
         },
@@ -5604,6 +5604,17 @@
           "lt": 1,
           "lte": 1
         }
+      },
+      "RangeCondition": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ]
       },
       "ReccomendGroupChunksRequest": {
         "type": "object",

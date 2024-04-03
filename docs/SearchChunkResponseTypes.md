@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.search_chunk_response_types import SearchChunkResponseTypes
+from trieve_py_client.models.search_chunk_response_types import SearchChunkResponseTypes
 
 # TODO update the JSON string below
 json = "{}"

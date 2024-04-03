@@ -1,4 +1,4 @@
-# trieve_python_client.StripeApi
+# trieve_py_client.StripeApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -22,13 +22,13 @@ Cancel Subscription  Cancel a subscription by its id
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -44,9 +44,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.StripeApi(api_client)
+    api_instance = trieve_py_client.StripeApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     subscription_id = 'subscription_id_example' # str | id of the subscription you want to cancel
 
@@ -100,21 +100,21 @@ Checkout  Get a direct link to the stripe checkout page for the plan and organiz
 
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.StripeApi(api_client)
+    api_instance = trieve_py_client.StripeApi(api_client)
     plan_id = 'plan_id_example' # str | id of the plan you want to subscribe to
     organization_id = 'organization_id_example' # str | id of the organization you want to subscribe to the plan
 
@@ -168,22 +168,22 @@ Get All Plans  Get a list of all plans
 
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.stripe_plan import StripePlan
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.stripe_plan import StripePlan
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.StripeApi(api_client)
+    api_instance = trieve_py_client.StripeApi(api_client)
 
     try:
         # Get All Plans
@@ -234,13 +234,13 @@ Update Subscription Plan  Update a subscription to a new plan
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -256,9 +256,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.StripeApi(api_client)
+    api_instance = trieve_py_client.StripeApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     subscription_id = 'subscription_id_example' # str | id of the subscription you want to update
     plan_id = 'plan_id_example' # str | id of the plan you want to subscribe to

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.organization_usage_count import OrganizationUsageCount
+from trieve_py_client.models.organization_usage_count import OrganizationUsageCount
 
 # TODO update the JSON string below
 json = "{}"

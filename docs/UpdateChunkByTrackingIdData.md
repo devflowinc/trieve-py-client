@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.update_chunk_by_tracking_id_data import UpdateChunkByTrackingIdData
+from trieve_py_client.models.update_chunk_by_tracking_id_data import UpdateChunkByTrackingIdData
 
 # TODO update the JSON string below
 json = "{}"

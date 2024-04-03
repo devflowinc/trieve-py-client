@@ -12,7 +12,7 @@ stages:
   script:
    - pip install -r requirements.txt
    - pip install -r test-requirements.txt
-   - pytest --cov=trieve_python_client
+   - pytest --cov=trieve_py_client
 
 pytest-3.7:
   extends: .pytest

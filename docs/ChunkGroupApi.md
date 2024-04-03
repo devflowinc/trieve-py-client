@@ -1,4 +1,4 @@
-# trieve_python_client.ChunkGroupApi
+# trieve_py_client.ChunkGroupApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -35,14 +35,14 @@ Add Chunk to Group  Route to add a chunk to a group.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.add_chunk_to_group_data import AddChunkToGroupData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.add_chunk_to_group_data import AddChunkToGroupData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -58,12 +58,12 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     group_id = 'group_id_example' # str | Id of the group to add the chunk to as a bookmark
-    add_chunk_to_group_data = trieve_python_client.AddChunkToGroupData() # AddChunkToGroupData | JSON request payload to add a chunk to a group (bookmark it)
+    add_chunk_to_group_data = trieve_py_client.AddChunkToGroupData() # AddChunkToGroupData | JSON request payload to add a chunk to a group (bookmark it)
 
     try:
         # Add Chunk to Group
@@ -117,14 +117,14 @@ Add Chunk to Group by Tracking ID  Route to add a chunk to a group by tracking i
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.add_chunk_to_group_data import AddChunkToGroupData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.add_chunk_to_group_data import AddChunkToGroupData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -140,12 +140,12 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | Id of the group to add the chunk to as a bookmark
-    add_chunk_to_group_data = trieve_python_client.AddChunkToGroupData() # AddChunkToGroupData | JSON request payload to add a chunk to a group (bookmark it)
+    add_chunk_to_group_data = trieve_py_client.AddChunkToGroupData() # AddChunkToGroupData | JSON request payload to add a chunk to a group (bookmark it)
 
     try:
         # Add Chunk to Group by Tracking ID
@@ -199,15 +199,15 @@ Create Chunk Group  Create a new chunk_group. This is a way to group chunks toge
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.chunk_group import ChunkGroup
-from trieve_python_client.models.create_chunk_group_data import CreateChunkGroupData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.chunk_group import ChunkGroup
+from trieve_py_client.models.create_chunk_group_data import CreateChunkGroupData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -223,11 +223,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    create_chunk_group_data = trieve_python_client.CreateChunkGroupData() # CreateChunkGroupData | JSON request payload to cretea a chunkGroup
+    create_chunk_group_data = trieve_py_client.CreateChunkGroupData() # CreateChunkGroupData | JSON request payload to cretea a chunkGroup
 
     try:
         # Create Chunk Group
@@ -282,13 +282,13 @@ Delete Group  This will delete a chunk_group. This will not delete the chunks th
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -304,9 +304,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     group_id = 'group_id_example' # str | Id of the group you want to fetch.
     delete_chunks = True # bool | Delete the chunks within the group
@@ -363,13 +363,13 @@ Delete Group by Tracking ID  Delete a chunk_group with the given tracking id.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -385,9 +385,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | Tracking id of the chunk_group to delete
 
@@ -442,14 +442,14 @@ Get Group  Fetch the group with the given id. get_group
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.chunk_group import ChunkGroup
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.chunk_group import ChunkGroup
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -465,9 +465,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     group_id = 'group_id_example' # str | Id of the group you want to fetch.
 
@@ -524,14 +524,14 @@ Get Chunks in Group  Route to get all chunks for a group. The response is pagina
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.bookmark_data import BookmarkData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.bookmark_data import BookmarkData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -547,9 +547,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     group_id = 'group_id_example' # str | Id of the group you want to fetch.
     page = 56 # int | The page of chunks to get from the group
@@ -608,14 +608,14 @@ Get Chunks in Group by Tracking ID  Route to get all chunks for a group. The res
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.bookmark_data import BookmarkData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.bookmark_data import BookmarkData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -631,9 +631,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     group_tracking_id = 'group_tracking_id_example' # str | The id of the group to get the chunks from
     page = 56 # int | The page of chunks to get from the group
@@ -692,14 +692,14 @@ Get Group by Tracking ID  Fetch the group with the given tracking id. get_group_
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.chunk_group import ChunkGroup
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.chunk_group import ChunkGroup
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -715,9 +715,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | The tracking id of the group to fetch.
 
@@ -774,15 +774,15 @@ Get Groups for Chunks  Route to get the groups that a chunk is in.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.bookmark_group_result import BookmarkGroupResult
-from trieve_python_client.models.get_groups_for_chunks_data import GetGroupsForChunksData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.bookmark_group_result import BookmarkGroupResult
+from trieve_py_client.models.get_groups_for_chunks_data import GetGroupsForChunksData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -798,11 +798,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    get_groups_for_chunks_data = trieve_python_client.GetGroupsForChunksData() # GetGroupsForChunksData | JSON request payload to get the groups that a chunk is in
+    get_groups_for_chunks_data = trieve_py_client.GetGroupsForChunksData() # GetGroupsForChunksData | JSON request payload to get the groups that a chunk is in
 
     try:
         # Get Groups for Chunks
@@ -857,15 +857,15 @@ Get Recommended Groups  Route to get recommended groups. This route will return 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.reccomend_group_chunks_request import ReccomendGroupChunksRequest
-from trieve_python_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.reccomend_group_chunks_request import ReccomendGroupChunksRequest
+from trieve_py_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -881,11 +881,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    reccomend_group_chunks_request = trieve_python_client.ReccomendGroupChunksRequest() # ReccomendGroupChunksRequest | JSON request payload to get recommendations of chunks similar to the chunks in the request
+    reccomend_group_chunks_request = trieve_py_client.ReccomendGroupChunksRequest() # ReccomendGroupChunksRequest | JSON request payload to get recommendations of chunks similar to the chunks in the request
 
     try:
         # Get Recommended Groups
@@ -940,14 +940,14 @@ Get Groups for Dataset  Fetch the groups which belong to a dataset specified by 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.group_data import GroupData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.group_data import GroupData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -963,9 +963,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     dataset_id = 'dataset_id_example' # str | The id of the dataset to fetch groups for.
     page = 56 # int | The page of groups to fetch. Each page contains 10 groups. Support for custom page size is coming soon.
@@ -1024,14 +1024,14 @@ Remove Chunk from Group  Route to remove a chunk from a group.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.create_chunk_group_data import CreateChunkGroupData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.create_chunk_group_data import CreateChunkGroupData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -1047,12 +1047,12 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     group_id = 'group_id_example' # str | Id of the group to remove the bookmark'ed chunk from
-    create_chunk_group_data = trieve_python_client.CreateChunkGroupData() # CreateChunkGroupData | JSON request payload to cretea a chunkGroup
+    create_chunk_group_data = trieve_py_client.CreateChunkGroupData() # CreateChunkGroupData | JSON request payload to cretea a chunkGroup
 
     try:
         # Remove Chunk from Group
@@ -1106,15 +1106,15 @@ Search Over Groups  This route allows you to get groups as results instead of ch
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.search_over_groups_data import SearchOverGroupsData
-from trieve_python_client.models.search_over_groups_response_types import SearchOverGroupsResponseTypes
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.search_over_groups_data import SearchOverGroupsData
+from trieve_py_client.models.search_over_groups_response_types import SearchOverGroupsResponseTypes
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -1130,11 +1130,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    search_over_groups_data = trieve_python_client.SearchOverGroupsData() # SearchOverGroupsData | JSON request payload to semantically search over groups
+    search_over_groups_data = trieve_py_client.SearchOverGroupsData() # SearchOverGroupsData | JSON request payload to semantically search over groups
 
     try:
         # Search Over Groups
@@ -1189,15 +1189,15 @@ Search Within Group  This route allows you to search only within a group. This i
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.search_within_group_data import SearchWithinGroupData
-from trieve_python_client.models.search_within_group_response_types import SearchWithinGroupResponseTypes
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.search_within_group_data import SearchWithinGroupData
+from trieve_py_client.models.search_within_group_response_types import SearchWithinGroupResponseTypes
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -1213,11 +1213,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    search_within_group_data = trieve_python_client.SearchWithinGroupData() # SearchWithinGroupData | JSON request payload to semantically search a group
+    search_within_group_data = trieve_py_client.SearchWithinGroupData() # SearchWithinGroupData | JSON request payload to semantically search a group
 
     try:
         # Search Within Group
@@ -1272,14 +1272,14 @@ Update Group  Update a chunk_group. If you try to change the tracking_id to one 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.update_chunk_group_data import UpdateChunkGroupData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.update_chunk_group_data import UpdateChunkGroupData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -1295,11 +1295,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    update_chunk_group_data = trieve_python_client.UpdateChunkGroupData() # UpdateChunkGroupData | JSON request payload to update a chunkGroup
+    update_chunk_group_data = trieve_py_client.UpdateChunkGroupData() # UpdateChunkGroupData | JSON request payload to update a chunkGroup
 
     try:
         # Update Group
@@ -1352,14 +1352,14 @@ Update Group by Tracking ID  Update a chunk_group with the given tracking id.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.update_group_by_tracking_id_data import UpdateGroupByTrackingIDData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.update_group_by_tracking_id_data import UpdateGroupByTrackingIDData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -1375,12 +1375,12 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.ChunkGroupApi(api_client)
+    api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | Tracking id of the chunk_group to update
-    update_group_by_tracking_id_data = trieve_python_client.UpdateGroupByTrackingIDData() # UpdateGroupByTrackingIDData | JSON request payload to update a chunkGroup
+    update_group_by_tracking_id_data = trieve_py_client.UpdateGroupByTrackingIDData() # UpdateGroupByTrackingIDData | JSON request payload to update a chunkGroup
 
     try:
         # Update Group by Tracking ID

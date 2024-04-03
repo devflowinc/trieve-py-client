@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.set_user_api_key_request import SetUserApiKeyRequest
+from trieve_py_client.models.set_user_api_key_request import SetUserApiKeyRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.chunk_group import ChunkGroup
+from trieve_py_client.models.chunk_group import ChunkGroup
 
 # TODO update the JSON string below
 json = "{}"

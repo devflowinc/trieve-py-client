@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
+from trieve_py_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
 
 # TODO update the JSON string below
 json = "{}"

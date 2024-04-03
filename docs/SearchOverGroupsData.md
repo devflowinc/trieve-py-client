@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.search_over_groups_data import SearchOverGroupsData
+from trieve_py_client.models.search_over_groups_data import SearchOverGroupsData
 
 # TODO update the JSON string below
 json = "{}"

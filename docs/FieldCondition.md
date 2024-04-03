@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.field_condition import FieldCondition
+from trieve_py_client.models.field_condition import FieldCondition
 
 # TODO update the JSON string below
 json = "{}"

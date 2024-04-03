@@ -1,4 +1,4 @@
-# trieve_python_client.FileApi
+# trieve_py_client.FileApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -22,13 +22,13 @@ Delete File  Delete a file from S3 attached to the server based on its id. This 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -44,9 +44,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.FileApi(api_client)
+    api_instance = trieve_py_client.FileApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     file_id = 'file_id_example' # str | The id of the file to delete
     delete_chunks = True # bool | Whether or not to delete the chunks associated with the file
@@ -103,14 +103,14 @@ Get Files for Dataset  Get all files which belong to a given dataset specified b
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.file import File
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.file import File
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -126,9 +126,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.FileApi(api_client)
+    api_instance = trieve_py_client.FileApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     dataset_id = 'dataset_id_example' # str | The id of the dataset to fetch files for.
     page = 56 # int | The page number of files you wish to fetch. Each page contains at most 10 files.
@@ -187,14 +187,14 @@ Get File  Download a file from S3 attached to the server based on its id. We pla
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.file_dto import FileDTO
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.file_dto import FileDTO
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -210,9 +210,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.FileApi(api_client)
+    api_instance = trieve_py_client.FileApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     file_id = 'file_id_example' # str | The id of the file to fetch
 
@@ -269,15 +269,15 @@ Upload File  Upload a file to S3 attached to the server. The file will be conver
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.upload_file_data import UploadFileData
-from trieve_python_client.models.upload_file_result import UploadFileResult
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.upload_file_data import UploadFileData
+from trieve_py_client.models.upload_file_result import UploadFileResult
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -293,11 +293,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.FileApi(api_client)
+    api_instance = trieve_py_client.FileApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    upload_file_data = trieve_python_client.UploadFileData() # UploadFileData | JSON request payload to upload a file
+    upload_file_data = trieve_py_client.UploadFileData() # UploadFileData | JSON request payload to upload a file
 
     try:
         # Upload File

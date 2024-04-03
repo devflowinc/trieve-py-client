@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**gt** | **float** |  | [optional] 
-**gte** | **float** |  | [optional] 
-**lt** | **float** |  | [optional] 
-**lte** | **float** |  | [optional] 
+**gt** | [**RangeCondition**](RangeCondition.md) |  | [optional] 
+**gte** | [**RangeCondition**](RangeCondition.md) |  | [optional] 
+**lt** | [**RangeCondition**](RangeCondition.md) |  | [optional] 
+**lte** | [**RangeCondition**](RangeCondition.md) |  | [optional] 
 
 ## Example
 
 ```python
-from trieve_python_client.models.range import Range
+from trieve_py_client.models.range import Range
 
 # TODO update the JSON string below
 json = "{}"

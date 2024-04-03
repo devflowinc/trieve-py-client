@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.batch_queued_chunk_response import BatchQueuedChunkResponse
+from trieve_py_client.models.batch_queued_chunk_response import BatchQueuedChunkResponse
 
 # TODO update the JSON string below
 json = "{}"

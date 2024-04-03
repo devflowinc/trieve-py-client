@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.chunk_filter import ChunkFilter
+from trieve_py_client.models.chunk_filter import ChunkFilter
 
 # TODO update the JSON string below
 json = "{}"

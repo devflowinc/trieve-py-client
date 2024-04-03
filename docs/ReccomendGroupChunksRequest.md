@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.reccomend_group_chunks_request import ReccomendGroupChunksRequest
+from trieve_py_client.models.reccomend_group_chunks_request import ReccomendGroupChunksRequest
 
 # TODO update the JSON string below
 json = "{}"

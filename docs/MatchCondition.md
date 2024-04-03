@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.match_condition import MatchCondition
+from trieve_py_client.models.match_condition import MatchCondition
 
 # TODO update the JSON string below
 json = "{}"

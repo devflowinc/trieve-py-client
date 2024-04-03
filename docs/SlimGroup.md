@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.slim_group import SlimGroup
+from trieve_py_client.models.slim_group import SlimGroup
 
 # TODO update the JSON string below
 json = "{}"

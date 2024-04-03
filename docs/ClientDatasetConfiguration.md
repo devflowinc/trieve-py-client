@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.client_dataset_configuration import ClientDatasetConfiguration
+from trieve_py_client.models.client_dataset_configuration import ClientDatasetConfiguration
 
 # TODO update the JSON string below
 json = "{}"

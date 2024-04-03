@@ -1,4 +1,4 @@
-# trieve_python_client.AuthApi
+# trieve_py_client.AuthApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -21,22 +21,22 @@ OpenID Connect callback  This is the callback route for the OAuth provider, it s
 
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.slim_user import SlimUser
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.slim_user import SlimUser
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.AuthApi(api_client)
+    api_instance = trieve_py_client.AuthApi(api_client)
 
     try:
         # OpenID Connect callback
@@ -87,14 +87,14 @@ Get Me  Get the user corresponding to your current auth credentials.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.slim_user import SlimUser
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.slim_user import SlimUser
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -110,9 +110,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.AuthApi(api_client)
+    api_instance = trieve_py_client.AuthApi(api_client)
 
     try:
         # Get Me
@@ -162,23 +162,23 @@ Login  This will redirect you to the OAuth provider for authentication with emai
 
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.auth_query import AuthQuery
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.auth_query import AuthQuery
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.AuthApi(api_client)
-    content = trieve_python_client.AuthQuery() # AuthQuery | Query parameters for login to be included as kv pairs after ? on the request URL.
+    api_instance = trieve_py_client.AuthApi(api_client)
+    content = trieve_py_client.AuthQuery() # AuthQuery | Query parameters for login to be included as kv pairs after ? on the request URL.
 
     try:
         # Login
@@ -229,21 +229,21 @@ Logout  Invalidate your current auth credential stored typically stored in a coo
 
 
 ```python
-import trieve_python_client
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.AuthApi(api_client)
+    api_instance = trieve_py_client.AuthApi(api_client)
 
     try:
         # Logout

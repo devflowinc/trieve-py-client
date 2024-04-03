@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.search_within_group_response_types import SearchWithinGroupResponseTypes
+from trieve_py_client.models.search_within_group_response_types import SearchWithinGroupResponseTypes
 
 # TODO update the JSON string below
 json = "{}"

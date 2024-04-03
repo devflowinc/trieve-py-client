@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.event_return import EventReturn
+from trieve_py_client.models.event_return import EventReturn
 
 # TODO update the JSON string below
 json = "{}"

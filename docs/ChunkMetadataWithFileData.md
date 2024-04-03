@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.chunk_metadata_with_file_data import ChunkMetadataWithFileData
+from trieve_py_client.models.chunk_metadata_with_file_data import ChunkMetadataWithFileData
 
 # TODO update the JSON string below
 json = "{}"

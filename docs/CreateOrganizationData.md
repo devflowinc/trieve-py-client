@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.create_organization_data import CreateOrganizationData
+from trieve_py_client.models.create_organization_data import CreateOrganizationData
 
 # TODO update the JSON string below
 json = "{}"

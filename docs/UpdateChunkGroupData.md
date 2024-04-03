@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.update_chunk_group_data import UpdateChunkGroupData
+from trieve_py_client.models.update_chunk_group_data import UpdateChunkGroupData
 
 # TODO update the JSON string below
 json = "{}"

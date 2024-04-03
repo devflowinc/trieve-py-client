@@ -1,4 +1,4 @@
-# trieve_python_client.OrganizationApi
+# trieve_py_client.OrganizationApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -24,15 +24,15 @@ Create Organization  Create a new organization. The auth'ed user who creates the
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.create_organization_data import CreateOrganizationData
-from trieve_python_client.models.organization import Organization
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.create_organization_data import CreateOrganizationData
+from trieve_py_client.models.organization import Organization
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -48,10 +48,10 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.OrganizationApi(api_client)
-    create_organization_data = trieve_python_client.CreateOrganizationData() # CreateOrganizationData | The organization data that you want to create
+    api_instance = trieve_py_client.OrganizationApi(api_client)
+    create_organization_data = trieve_py_client.CreateOrganizationData() # CreateOrganizationData | The organization data that you want to create
 
     try:
         # Create Organization
@@ -105,14 +105,14 @@ Delete Organization  Delete an organization by its id. The auth'ed user must be 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.organization import Organization
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.organization import Organization
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -128,9 +128,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.OrganizationApi(api_client)
+    api_instance = trieve_py_client.OrganizationApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     organization_id = 'organization_id_example' # str | The id of the organization you want to fetch.
 
@@ -187,14 +187,14 @@ Get Organization  Fetch the details of an organization by its id. The auth'ed us
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.organization import Organization
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.organization import Organization
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -210,9 +210,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.OrganizationApi(api_client)
+    api_instance = trieve_py_client.OrganizationApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     organization_id = 'organization_id_example' # str | The id of the organization you want to fetch.
 
@@ -269,14 +269,14 @@ Get Organization Usage  Fetch the current usage specification of an organization
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.organization_usage_count import OrganizationUsageCount
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.organization_usage_count import OrganizationUsageCount
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -292,9 +292,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.OrganizationApi(api_client)
+    api_instance = trieve_py_client.OrganizationApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     organization_id = 'organization_id_example' # str | The id of the organization you want to fetch the usage of.
 
@@ -351,14 +351,14 @@ Get Organization Users  Fetch the users of an organization by its id. The auth'e
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.slim_user import SlimUser
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.slim_user import SlimUser
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -374,9 +374,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.OrganizationApi(api_client)
+    api_instance = trieve_py_client.OrganizationApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     organization_id = 'organization_id_example' # str | The id of the organization you want to fetch the users of.
 
@@ -433,15 +433,15 @@ Update Organization  Update an organization. Only the owner of the organization 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.organization import Organization
-from trieve_python_client.models.update_organization_data import UpdateOrganizationData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.organization import Organization
+from trieve_py_client.models.update_organization_data import UpdateOrganizationData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -457,11 +457,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.OrganizationApi(api_client)
+    api_instance = trieve_py_client.OrganizationApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
-    update_organization_data = trieve_python_client.UpdateOrganizationData() # UpdateOrganizationData | The organization data that you want to update
+    update_organization_data = trieve_py_client.UpdateOrganizationData() # UpdateOrganizationData | The organization data that you want to update
 
     try:
         # Update Organization

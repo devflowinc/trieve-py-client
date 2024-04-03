@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.score_slim_chunks import ScoreSlimChunks
+from trieve_py_client.models.score_slim_chunks import ScoreSlimChunks
 
 # TODO update the JSON string below
 json = "{}"

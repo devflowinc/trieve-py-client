@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.delete_user_api_key_request import DeleteUserApiKeyRequest
+from trieve_py_client.models.delete_user_api_key_request import DeleteUserApiKeyRequest
 
 # TODO update the JSON string below
 json = "{}"

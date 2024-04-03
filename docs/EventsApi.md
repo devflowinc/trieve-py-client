@@ -1,4 +1,4 @@
-# trieve_python_client.EventsApi
+# trieve_py_client.EventsApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -19,15 +19,15 @@ Get events for the dataset  Get events for the auth'ed user. Currently, this is 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.event_return import EventReturn
-from trieve_python_client.models.get_events_data import GetEventsData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.event_return import EventReturn
+from trieve_py_client.models.get_events_data import GetEventsData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -43,11 +43,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.EventsApi(api_client)
+    api_instance = trieve_py_client.EventsApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    get_events_data = trieve_python_client.GetEventsData() # GetEventsData | JSON request payload to get events for a dataset
+    get_events_data = trieve_py_client.GetEventsData() # GetEventsData | JSON request payload to get events for a dataset
 
     try:
         # Get events for the dataset

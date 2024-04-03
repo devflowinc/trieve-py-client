@@ -1,11 +1,11 @@
-# trieve_python_client.DatasetApi
+# trieve_py_client.DatasetApi
 
 All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_dataset**](DatasetApi.md#create_dataset) | **POST** /api/dataset | Create dataset
-[**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /api/dataset | Delete Dataset
+[**delete_dataset**](DatasetApi.md#delete_dataset) | **DELETE** /api/dataset/{dataset_id} | Delete Dataset
 [**get_client_dataset_config**](DatasetApi.md#get_client_dataset_config) | **GET** /api/dataset/envs | Get Client Configuration
 [**get_dataset**](DatasetApi.md#get_dataset) | **GET** /api/dataset/{dataset_id} | Get Dataset
 [**get_datasets_from_organization**](DatasetApi.md#get_datasets_from_organization) | **GET** /api/dataset/organization/{organization_id} | Get Datasets from Organization
@@ -24,15 +24,15 @@ Create dataset  Create a new dataset. The auth'ed user must be an owner of the o
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.create_dataset_request import CreateDatasetRequest
-from trieve_python_client.models.dataset import Dataset
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.create_dataset_request import CreateDatasetRequest
+from trieve_py_client.models.dataset import Dataset
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -48,11 +48,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.DatasetApi(api_client)
+    api_instance = trieve_py_client.DatasetApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
-    create_dataset_request = trieve_python_client.CreateDatasetRequest() # CreateDatasetRequest | JSON request payload to create a new dataset
+    create_dataset_request = trieve_py_client.CreateDatasetRequest() # CreateDatasetRequest | JSON request payload to create a new dataset
 
     try:
         # Create dataset
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dataset**
-> delete_dataset(tr_organization, delete_dataset_request)
+> delete_dataset(tr_organization, dataset_id)
 
 Delete Dataset
 
@@ -107,14 +107,13 @@ Delete Dataset  Delete a dataset. The auth'ed user must be an owner of the organ
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.delete_dataset_request import DeleteDatasetRequest
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -130,15 +129,15 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.DatasetApi(api_client)
+    api_instance = trieve_py_client.DatasetApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
-    delete_dataset_request = trieve_python_client.DeleteDatasetRequest() # DeleteDatasetRequest | JSON request payload to delete a dataset
+    dataset_id = 'dataset_id_example' # str | The id of the dataset you want to delete.
 
     try:
         # Delete Dataset
-        api_instance.delete_dataset(tr_organization, delete_dataset_request)
+        api_instance.delete_dataset(tr_organization, dataset_id)
     except Exception as e:
         print("Exception when calling DatasetApi->delete_dataset: %s\n" % e)
 ```
@@ -151,7 +150,7 @@ with trieve_python_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tr_organization** | **str**| The organization id to use for the request | 
- **delete_dataset_request** | [**DeleteDatasetRequest**](DeleteDatasetRequest.md)| JSON request payload to delete a dataset | 
+ **dataset_id** | **str**| The id of the dataset you want to delete. | 
 
 ### Return type
 
@@ -163,7 +162,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -187,14 +186,14 @@ Get Client Configuration  Get the client configuration for a dataset. Will use t
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.client_dataset_configuration import ClientDatasetConfiguration
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.client_dataset_configuration import ClientDatasetConfiguration
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -210,9 +209,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.DatasetApi(api_client)
+    api_instance = trieve_py_client.DatasetApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
 
     try:
@@ -267,14 +266,14 @@ Get Dataset  Get a dataset by id. The auth'ed user must be an admin or owner of 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.dataset import Dataset
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.dataset import Dataset
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -290,9 +289,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.DatasetApi(api_client)
+    api_instance = trieve_py_client.DatasetApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     dataset_id = 'dataset_id_example' # str | The id of the dataset you want to retrieve.
@@ -351,14 +350,14 @@ Get Datasets from Organization  Get all datasets for an organization. The auth'e
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.dataset_and_usage import DatasetAndUsage
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.dataset_and_usage import DatasetAndUsage
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -374,9 +373,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.DatasetApi(api_client)
+    api_instance = trieve_py_client.DatasetApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
     organization_id = 'organization_id_example' # str | id of the organization you want to retrieve datasets for
 
@@ -433,15 +432,15 @@ Update Dataset  Update a dataset. The auth'ed user must be an owner of the organ
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.dataset import Dataset
-from trieve_python_client.models.update_dataset_request import UpdateDatasetRequest
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.dataset import Dataset
+from trieve_py_client.models.update_dataset_request import UpdateDatasetRequest
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -457,11 +456,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.DatasetApi(api_client)
+    api_instance = trieve_py_client.DatasetApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
-    update_dataset_request = trieve_python_client.UpdateDatasetRequest() # UpdateDatasetRequest | JSON request payload to update a dataset
+    update_dataset_request = trieve_py_client.UpdateDatasetRequest() # UpdateDatasetRequest | JSON request payload to update a dataset
 
     try:
         # Update Dataset

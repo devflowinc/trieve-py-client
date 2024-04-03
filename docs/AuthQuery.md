@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.auth_query import AuthQuery
+from trieve_py_client.models.auth_query import AuthQuery
 
 # TODO update the JSON string below
 json = "{}"

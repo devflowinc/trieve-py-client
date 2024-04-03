@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.api_key_dto import ApiKeyDTO
+from trieve_py_client.models.api_key_dto import ApiKeyDTO
 
 # TODO update the JSON string below
 json = "{}"

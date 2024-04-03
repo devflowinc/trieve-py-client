@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.regenerate_message_data import RegenerateMessageData
+from trieve_py_client.models.regenerate_message_data import RegenerateMessageData
 
 # TODO update the JSON string below
 json = "{}"

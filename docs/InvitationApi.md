@@ -1,4 +1,4 @@
-# trieve_python_client.InvitationApi
+# trieve_py_client.InvitationApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -19,14 +19,14 @@ Send Invitation  Invitations act as a way to invite users to join an organizatio
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.invitation_data import InvitationData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.invitation_data import InvitationData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -42,11 +42,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.InvitationApi(api_client)
+    api_instance = trieve_py_client.InvitationApi(api_client)
     tr_organization = 'tr_organization_example' # str | The organization id to use for the request
-    invitation_data = trieve_python_client.InvitationData() # InvitationData | JSON request payload to send an invitation
+    invitation_data = trieve_py_client.InvitationData() # InvitationData | JSON request payload to send an invitation
 
     try:
         # Send Invitation

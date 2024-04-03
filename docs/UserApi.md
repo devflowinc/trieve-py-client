@@ -1,16 +1,16 @@
-# trieve_python_client.UserApi
+# trieve_py_client.UserApi
 
 All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_user_api_key**](UserApi.md#delete_user_api_key) | **DELETE** /api/user/delete_api_key | Delete User Api Key
+[**delete_user_api_key**](UserApi.md#delete_user_api_key) | **DELETE** /api/user/delete_api_key/{api_key_id} | Delete User Api Key
 [**set_user_api_key**](UserApi.md#set_user_api_key) | **POST** /api/user/set_api_key | Set User Api Key
 [**update_user**](UserApi.md#update_user) | **PUT** /api/user | Update User
 
 
 # **delete_user_api_key**
-> List[ApiKeyDTO] delete_user_api_key(delete_user_api_key_request)
+> List[ApiKeyDTO] delete_user_api_key(api_key_id)
 
 Delete User Api Key
 
@@ -21,15 +21,14 @@ Delete User Api Key  Delete an api key for the auth'ed user.
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.api_key_dto import ApiKeyDTO
-from trieve_python_client.models.delete_user_api_key_request import DeleteUserApiKeyRequest
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.api_key_dto import ApiKeyDTO
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -45,14 +44,14 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.UserApi(api_client)
-    delete_user_api_key_request = trieve_python_client.DeleteUserApiKeyRequest() # DeleteUserApiKeyRequest | JSON request payload to delete a user api key
+    api_instance = trieve_py_client.UserApi(api_client)
+    api_key_id = 'api_key_id_example' # str | The id of the api key to delete
 
     try:
         # Delete User Api Key
-        api_response = api_instance.delete_user_api_key(delete_user_api_key_request)
+        api_response = api_instance.delete_user_api_key(api_key_id)
         print("The response of UserApi->delete_user_api_key:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,7 +65,7 @@ with trieve_python_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_user_api_key_request** | [**DeleteUserApiKeyRequest**](DeleteUserApiKeyRequest.md)| JSON request payload to delete a user api key | 
+ **api_key_id** | **str**| The id of the api key to delete | 
 
 ### Return type
 
@@ -78,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -102,15 +101,15 @@ Set User Api Key  Create a new api key for the auth'ed user. Successful response
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.set_user_api_key_request import SetUserApiKeyRequest
-from trieve_python_client.models.set_user_api_key_response import SetUserApiKeyResponse
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.set_user_api_key_request import SetUserApiKeyRequest
+from trieve_py_client.models.set_user_api_key_response import SetUserApiKeyResponse
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -126,10 +125,10 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.UserApi(api_client)
-    set_user_api_key_request = trieve_python_client.SetUserApiKeyRequest() # SetUserApiKeyRequest | JSON request payload to create a new user api key
+    api_instance = trieve_py_client.UserApi(api_client)
+    set_user_api_key_request = trieve_py_client.SetUserApiKeyRequest() # SetUserApiKeyRequest | JSON request payload to create a new user api key
 
     try:
         # Set User Api Key
@@ -183,15 +182,15 @@ Update User  Update a user's information. If the user_id is not provided, the au
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.slim_user import SlimUser
-from trieve_python_client.models.update_user_data import UpdateUserData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.slim_user import SlimUser
+from trieve_py_client.models.update_user_data import UpdateUserData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -207,10 +206,10 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.UserApi(api_client)
-    update_user_data = trieve_python_client.UpdateUserData() # UpdateUserData | JSON request payload to update user information for the auth'ed user
+    api_instance = trieve_py_client.UserApi(api_client)
+    update_user_data = trieve_py_client.UpdateUserData() # UpdateUserData | JSON request payload to update user information for the auth'ed user
 
     try:
         # Update User

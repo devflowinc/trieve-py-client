@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.chunk_data import ChunkData
+from trieve_py_client.models.chunk_data import ChunkData
 
 # TODO update the JSON string below
 json = "{}"

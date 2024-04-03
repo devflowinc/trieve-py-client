@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.search_group_slim_chunks_result import SearchGroupSlimChunksResult
+from trieve_py_client.models.search_group_slim_chunks_result import SearchGroupSlimChunksResult
 
 # TODO update the JSON string below
 json = "{}"

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.recommend_chunks_request import RecommendChunksRequest
+from trieve_py_client.models.recommend_chunks_request import RecommendChunksRequest
 
 # TODO update the JSON string below
 json = "{}"

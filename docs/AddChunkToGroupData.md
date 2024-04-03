@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.add_chunk_to_group_data import AddChunkToGroupData
+from trieve_py_client.models.add_chunk_to_group_data import AddChunkToGroupData
 
 # TODO update the JSON string below
 json = "{}"

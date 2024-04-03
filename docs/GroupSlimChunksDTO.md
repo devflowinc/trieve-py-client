@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from trieve_python_client.models.group_slim_chunks_dto import GroupSlimChunksDTO
+from trieve_py_client.models.group_slim_chunks_dto import GroupSlimChunksDTO
 
 # TODO update the JSON string below
 json = "{}"

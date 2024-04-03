@@ -1,4 +1,4 @@
-# trieve_python_client.MessageApi
+# trieve_py_client.MessageApi
 
 All URIs are relative to *https://api.trieve.ai*
 
@@ -22,14 +22,14 @@ Create a message  Create a message. Messages are attached to topics in order to 
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.create_message_data import CreateMessageData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.create_message_data import CreateMessageData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -45,11 +45,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.MessageApi(api_client)
+    api_instance = trieve_py_client.MessageApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    create_message_data = trieve_python_client.CreateMessageData() # CreateMessageData | JSON request payload to create a message completion
+    create_message_data = trieve_py_client.CreateMessageData() # CreateMessageData | JSON request payload to create a message completion
 
     try:
         # Create a message
@@ -104,14 +104,14 @@ Edit a message  Edit a message which exists within the topic's chat history. Thi
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.edit_message_data import EditMessageData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.edit_message_data import EditMessageData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -127,11 +127,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.MessageApi(api_client)
+    api_instance = trieve_py_client.MessageApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    edit_message_data = trieve_python_client.EditMessageData() # EditMessageData | JSON request payload to edit a message and get a new stream
+    edit_message_data = trieve_py_client.EditMessageData() # EditMessageData | JSON request payload to edit a message and get a new stream
 
     try:
         # Edit a message
@@ -184,14 +184,14 @@ Get all messages for a given topic  Get all messages for a given topic. If the t
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.message import Message
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.message import Message
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -207,9 +207,9 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.MessageApi(api_client)
+    api_instance = trieve_py_client.MessageApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     messages_topic_id = 'messages_topic_id_example' # str | The ID of the topic to get messages for.
 
@@ -266,14 +266,14 @@ Regenerate message  Regenerate the assistant response to the last user message o
 * Api Key Authentication (ApiKey):
 
 ```python
-import trieve_python_client
-from trieve_python_client.models.regenerate_message_data import RegenerateMessageData
-from trieve_python_client.rest import ApiException
+import trieve_py_client
+from trieve_py_client.models.regenerate_message_data import RegenerateMessageData
+from trieve_py_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.trieve.ai
 # See configuration.py for a list of all supported configuration parameters.
-configuration = trieve_python_client.Configuration(
+configuration = trieve_py_client.Configuration(
     host = "https://api.trieve.ai"
 )
 
@@ -289,11 +289,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with trieve_python_client.ApiClient(configuration) as api_client:
+with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trieve_python_client.MessageApi(api_client)
+    api_instance = trieve_py_client.MessageApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    regenerate_message_data = trieve_python_client.RegenerateMessageData() # RegenerateMessageData | JSON request payload to delete an agent message then regenerate it in a strem
+    regenerate_message_data = trieve_py_client.RegenerateMessageData() # RegenerateMessageData | JSON request payload to delete an agent message then regenerate it in a strem
 
     try:
         # Regenerate message
