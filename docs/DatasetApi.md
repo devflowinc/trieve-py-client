@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dataset**
-> delete_dataset(tr_organization, dataset_id)
+> delete_dataset(tr_dataset, dataset_id)
 
 Delete Dataset
 
@@ -132,12 +132,12 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trieve_py_client.DatasetApi(api_client)
-    tr_organization = 'tr_organization_example' # str | The organization id to use for the request
+    tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     dataset_id = 'dataset_id_example' # str | The id of the dataset you want to delete.
 
     try:
         # Delete Dataset
-        api_instance.delete_dataset(tr_organization, dataset_id)
+        api_instance.delete_dataset(tr_dataset, dataset_id)
     except Exception as e:
         print("Exception when calling DatasetApi->delete_dataset: %s\n" % e)
 ```
@@ -149,7 +149,7 @@ with trieve_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tr_organization** | **str**| The organization id to use for the request | 
+ **tr_dataset** | **str**| The dataset id to use for the request | 
  **dataset_id** | **str**| The id of the dataset you want to delete. | 
 
 ### Return type

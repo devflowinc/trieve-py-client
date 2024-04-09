@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "trieve_py_client"
-version = "0.5.7"
+version = "0.6.0"
 description = "Trieve API"
 authors = ["Trieve Team <developers@trieve.ai>"]
 license = "BSL"

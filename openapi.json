@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.5.7"
+    "version": "0.6.0"
   },
   "servers": [
     {
@@ -35,12 +35,35 @@
         "operationId": "login",
         "parameters": [
           {
-            "name": "content",
+            "name": "organization_id",
             "in": "query",
-            "description": "Query parameters for login to be included as kv pairs after ? on the request URL.",
-            "required": true,
+            "description": "ID of organization to authenticate into",
+            "required": false,
             "schema": {
-              "$ref": "#/components/schemas/AuthQuery"
+              "type": "string",
+              "format": "uuid",
+              "nullable": true
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "description": "URL to redirect to after successful login",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "inv_code",
+            "in": "query",
+            "description": "Code sent via email as a result of successful call to send_invitation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "nullable": true
             }
           }
         ],
@@ -557,6 +580,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "ApiKey": [
@@ -1174,7 +1198,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ReccomendGroupChunksRequest"
+                "$ref": "#/components/schemas/RecommendGroupChunksRequest"
               }
             }
           },
@@ -1278,7 +1302,7 @@
           "chunk_group"
         ],
         "summary": "Get Chunks in Group by Tracking ID",
-        "description": "Get Chunks in Group by Tracking ID\n\nRoute to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Support for custom page size is coming soon.",
+        "description": "Get Chunks in Group by Tracking ID\n\nRoute to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Support for custom page size is coming soon. Page is 1-indexed.",
         "operationId": "get_chunks_in_group_by_tracking_id",
         "parameters": [
           {
@@ -1453,6 +1477,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "ApiKey": [
@@ -1515,6 +1540,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "ApiKey": [
@@ -1638,7 +1664,7 @@
           "chunk_group"
         ],
         "summary": "Delete Group",
-        "description": "Delete Group\n\nThis will delete a chunk_group. This will not delete the chunks that are in the group. We will soon support deleting a chunk_group along with its member chunks.",
+        "description": "Delete Group\n\nThis will delete a chunk_group. If you set delete_chunks to true, it will also delete the chunks within the group.",
         "operationId": "delete_chunk_group",
         "parameters": [
           {
@@ -1700,7 +1726,7 @@
           "chunk_group"
         ],
         "summary": "Get Chunks in Group",
-        "description": "Get Chunks in Group\n\nRoute to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Support for custom page size is coming soon.",
+        "description": "Get Chunks in Group\n\nRoute to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Page is 1-indexed.",
         "operationId": "get_chunks_in_group",
         "parameters": [
           {
@@ -2041,7 +2067,7 @@
           {
             "name": "page",
             "in": "path",
-            "description": "The page of groups to fetch. Each page contains 10 groups. Support for custom page size is coming soon.",
+            "description": "The page of groups to fetch. Page is 1-indexed.",
             "required": true,
             "schema": {
               "type": "integer",
@@ -2220,9 +2246,9 @@
         "operationId": "delete_dataset",
         "parameters": [
           {
-            "name": "TR-Organization",
+            "name": "TR-Dataset",
             "in": "header",
-            "description": "The organization id to use for the request",
+            "description": "The dataset id to use for the request",
             "required": true,
             "schema": {
               "type": "string"
@@ -2269,7 +2295,7 @@
           "events"
         ],
         "summary": "Get events for the dataset",
-        "description": "Get events for the dataset\n\nGet events for the auth'ed user. Currently, this is only for events belonging to the auth'ed user. Soon, we plan to associate events to datasets instead of users.",
+        "description": "Get events for the dataset\n\nGet events for the dataset specified by the TR-Dataset header.",
         "operationId": "get_events",
         "parameters": [
           {
@@ -2391,7 +2417,7 @@
           "file"
         ],
         "summary": "Get File",
-        "description": "Get File\n\nDownload a file from S3 attached to the server based on its id. We plan to add support for getting signed S3 URLs to download from S3 directly in a release soon.",
+        "description": "Get File\n\nDownload a file based on its id.",
         "operationId": "get_file_handler",
         "parameters": [
           {
@@ -2449,7 +2475,7 @@
           "file"
         ],
         "summary": "Delete File",
-        "description": "Delete File\n\nDelete a file from S3 attached to the server based on its id. This will disassociate chunks from the file, but will not delete the chunks. We plan to add support for deleting chunks in a release soon. Auth'ed user must be an admin or owner of the dataset's organization to upload a file.",
+        "description": "Delete File\n\nDelete a file from S3 attached to the server based on its id. This will disassociate chunks from the file, but only delete them all together if you specify delete_chunks to be true. Auth'ed user must be an admin or owner of the dataset's organization to delete a file.",
         "operationId": "delete_file_handler",
         "parameters": [
           {
@@ -3755,14 +3781,17 @@
     "schemas": {
       "AddChunkToGroupData": {
         "type": "object",
-        "required": [
-          "chunk_id"
-        ],
         "properties": {
           "chunk_id": {
             "type": "string",
             "format": "uuid",
-            "description": "Id of the chunk to make a member of the group."
+            "description": "Id of the chunk to make a member of the group.",
+            "nullable": true
+          },
+          "tracking_id": {
+            "type": "string",
+            "description": "Tracking Id of the chunk to make a member of the group.",
+            "nullable": true
           }
         }
       },
@@ -4181,8 +4210,15 @@
             "type": "string",
             "format": "uuid"
           },
+          "metadata": {
+            "nullable": true
+          },
           "name": {
             "type": "string"
+          },
+          "tag_set": {
+            "type": "string",
+            "nullable": true
           },
           "tracking_id": {
             "type": "string",
@@ -4576,9 +4612,21 @@
             "type": "string",
             "description": "Description to assign to the chunk_group. Convenience field for you to avoid having to remember what the group is for."
           },
+          "metadata": {
+            "description": "Optional metadata to assign to the chunk_group. This is a JSON object that can store any additional information you want to associate with the chunks inside of the chunk_group.",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "description": "Name to assign to the chunk_group. Does not need to be unique."
+          },
+          "tag_set": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional tags to assign to the chunk_group. This is a list of strings that can be used to categorize the chunks inside the chunk_group.",
+            "nullable": true
           },
           "tracking_id": {
             "type": "string",
@@ -5616,70 +5664,10 @@
           }
         ]
       },
-      "ReccomendGroupChunksRequest": {
-        "type": "object",
-        "properties": {
-          "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChunkFilter"
-              }
-            ],
-            "nullable": true
-          },
-          "group_size": {
-            "type": "integer",
-            "format": "int32",
-            "description": "The number of chunks to fetch for each group. This is the number of chunks which will be returned in the response for each group. The default is 10.",
-            "nullable": true,
-            "minimum": 0
-          },
-          "limit": {
-            "type": "integer",
-            "format": "int64",
-            "description": "The number of groups to return. This is the number of groups which will be returned in the response. The default is 10.",
-            "nullable": true,
-            "minimum": 0
-          },
-          "negative_group_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "The  ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups.",
-            "nullable": true
-          },
-          "negative_group_tracking_ids": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The  ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups.",
-            "nullable": true
-          },
-          "positive_group_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "The  ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.",
-            "nullable": true
-          },
-          "positive_group_tracking_ids": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The  ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.",
-            "nullable": true
-          },
-          "slim_chunks": {
-            "type": "boolean",
-            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
-            "nullable": true
-          }
+      "RecommendChunkMetadata": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ChunkMetadata"
         }
       },
       "RecommendChunksRequest": {
@@ -5738,121 +5726,122 @@
             "type": "boolean",
             "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
             "nullable": true
+          },
+          "strategy": {
+            "type": "string",
+            "description": "Strategy to use for recommendations, either \"average_vector\" or \"best_score\". The default is \"average_vector\". The \"average_vector\" strategy will construct a single average vector from the positive and negative samples then use it to perform a pseudo-search. The \"best_score\" strategy is more advanced and navigates the HNSW with a heuristic of picking edges where the point is closer to the positive samples than it is the negatives.",
+            "nullable": true
           }
         }
       },
       "RecommendChunksResponseTypes": {
         "oneOf": [
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChunkMetadata"
-            },
-            "example": [
-              {
-                "chunk_html": "<p>Hello, world!</p>",
-                "content": "Hello, world!",
-                "created_at": "2021-01-01T00:00:00",
-                "dataset_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "link": "https://trieve.ai",
-                "metadata": {
-                  "key": "value"
-                },
-                "qdrant_point_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "tag_set": "tag1,tag2",
-                "time_stamp": "2021-01-01T00:00:00",
-                "tracking_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "updated_at": "2021-01-01T00:00:00",
-                "weight": 0.5
-              }
-            ]
+            "$ref": "#/components/schemas/RecommendChunkMetadata"
           },
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SlimChunkMetadata"
-            },
-            "example": [
-              {
-                "created_at": "2021-01-01T00:00:00",
-                "dataset_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "link": "https://trieve.ai",
-                "metadata": {
-                  "key": "value"
-                },
-                "qdrant_point_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "tag_set": "tag1,tag2",
-                "time_stamp": "2021-01-01T00:00:00",
-                "tracking_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "updated_at": "2021-01-01T00:00:00",
-                "weight": 0.5
-              }
-            ]
+            "$ref": "#/components/schemas/RecommendSlimChunkMetadata"
           }
         ]
       },
       "RecommendGroupChunkResponseTypes": {
         "oneOf": [
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GroupSlimChunksDTO"
-            },
-            "example": [
-              {
-                "group_id": "e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                "metadata": [
-                  {
-                    "metadata": [
-                      {
-                        "content": "This is a test content",
-                        "id": "e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                        "link": "https://www.google.com",
-                        "metadata": {
-                          "key": "value"
-                        },
-                        "tag_set": "test",
-                        "time_stamp": "2021-01-01T00:00:00Z",
-                        "tracking_id": "e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                        "weight": 1
-                      }
-                    ],
-                    "score": 0.5
-                  }
-                ]
-              }
-            ]
+            "$ref": "#/components/schemas/RecommendGroupSlimChunksDTO"
           },
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GroupScoreChunkDTO"
-            },
-            "example": {
-              "group_id": "e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-              "metadata": [
-                {
-                  "metadata": [
-                    {
-                      "id": "e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                      "link": "https://www.google.com",
-                      "metadata": {
-                        "key": "value"
-                      },
-                      "tag_set": "test",
-                      "time_stamp": "2021-01-01T00:00:00Z",
-                      "tracking_id": "e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
-                      "weight": 1
-                    }
-                  ],
-                  "score": 0.5
-                }
-              ]
-            }
+            "$ref": "#/components/schemas/RecommendGroupChunksDTO"
           }
         ]
+      },
+      "RecommendGroupChunksDTO": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GroupScoreChunkDTO"
+        }
+      },
+      "RecommendGroupChunksRequest": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ChunkFilter"
+              }
+            ],
+            "nullable": true
+          },
+          "group_size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of chunks to fetch for each group. This is the number of chunks which will be returned in the response for each group. The default is 3. If this is set to a large number, we recommend setting slim_chunks to true to avoid returning the content and chunk_html of the chunks so as to reduce latency due to content download and serialization.",
+            "nullable": true,
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The number of groups to return. This is the number of groups which will be returned in the response. The default is 10.",
+            "nullable": true,
+            "minimum": 0
+          },
+          "negative_group_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups.",
+            "nullable": true
+          },
+          "negative_group_tracking_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups.",
+            "nullable": true
+          },
+          "positive_group_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.",
+            "nullable": true
+          },
+          "positive_group_tracking_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.",
+            "nullable": true
+          },
+          "slim_chunks": {
+            "type": "boolean",
+            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
+            "nullable": true
+          },
+          "strategy": {
+            "type": "string",
+            "description": "Strategy to use for recommendations, either \"average_vector\" or \"best_score\". The default is \"average_vector\". The \"average_vector\" strategy will construct a single average vector from the positive and negative samples then use it to perform a pseudo-search. The \"best_score\" strategy is more advanced and navigates the HNSW with a heuristic of picking edges where the point is closer to the positive samples than it is the negatives.",
+            "nullable": true
+          }
+        }
+      },
+      "RecommendGroupSlimChunksDTO": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GroupSlimChunksDTO"
+        }
+      },
+      "RecommendSlimChunkMetadata": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SlimChunkMetadata"
+        }
       },
       "RegenerateMessageData": {
         "type": "object",
@@ -6015,7 +6004,7 @@
           "page": {
             "type": "integer",
             "format": "int64",
-            "description": "Page of chunks to fetch. Each page is 10 chunks. Support for custom page size is coming soon.",
+            "description": "Page of chunks to fetch. Page is 1-indexed.",
             "nullable": true,
             "minimum": 0
           },
@@ -6029,11 +6018,6 @@
           "query": {
             "type": "string",
             "description": "Query is the search query. This can be any string. The query will be used to create an embedding vector and/or SPLADE vector which will be used to find the result set."
-          },
-          "quote_negated_words": {
-            "type": "boolean",
-            "description": "Turn on quote words and negated words to search for exact phrases and exclude words from the search results. Default is false.",
-            "nullable": true
           },
           "score_threshold": {
             "type": "number",
@@ -6219,6 +6203,7 @@
           "group_size": {
             "type": "integer",
             "format": "int32",
+            "description": "Group_size is the number of chunks to fetch for each group. The default is 3. If a group has less than group_size chunks, all chunks will be returned. If this is set to a large number, we recommend setting slim_chunks to true to avoid returning the content and chunk_html of the chunks so as to lower the amount of time required for content download and serialization.",
             "nullable": true,
             "minimum": 0
           },
@@ -6238,25 +6223,20 @@
           "page": {
             "type": "integer",
             "format": "int64",
-            "description": "Page of chunks to fetch. Each page is 10 chunks. Support for custom page size is coming soon.",
+            "description": "Page of group results to fetch. Page is 1-indexed.",
             "nullable": true,
             "minimum": 0
           },
           "page_size": {
             "type": "integer",
             "format": "int32",
-            "description": "Page size is the number of chunks to fetch. This can be used to fetch more than 10 chunks at a time.",
+            "description": "Page size is the number of group results to fetch. The default is 10.",
             "nullable": true,
             "minimum": 0
           },
           "query": {
             "type": "string",
             "description": "Query is the search query. This can be any string. The query will be used to create an embedding vector and/or SPLADE vector which will be used to find the result set."
-          },
-          "quote_negated_words": {
-            "type": "boolean",
-            "description": "Turn on quote words and negated words to search for exact phrases and exclude words from the search results. Default is false.",
-            "nullable": true
           },
           "score_threshold": {
             "type": "number",
@@ -6389,7 +6369,7 @@
           "page": {
             "type": "integer",
             "format": "int64",
-            "description": "The page of chunks to fetch. Each page is 10 chunks. Support for custom page size is coming soon.",
+            "description": "The page of chunks to fetch. Page is 1-indexed.",
             "nullable": true,
             "minimum": 0
           },
@@ -6403,11 +6383,6 @@
           "query": {
             "type": "string",
             "description": "The query is the search query. This can be any string. The query will be used to create an embedding vector and/or SPLADE vector which will be used to find the result set."
-          },
-          "quote_negated_words": {
-            "type": "boolean",
-            "description": "Turn on quote words and negated words to search for exact phrases and exclude words from the search results. Default is false.",
-            "nullable": true
           },
           "score_threshold": {
             "type": "number",
@@ -6966,9 +6941,21 @@
             "description": "Id of the chunk_group to update.",
             "nullable": true
           },
+          "metadata": {
+            "description": "Optional metadata to assign to the chunk_group. This is a JSON object that can store any additional information you want to associate with the chunks inside of the chunk_group.",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "description": "Name to assign to the chunk_group. Does not need to be unique. If not provided, the name will not be updated.",
+            "nullable": true
+          },
+          "tag_set": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional tags to assign to the chunk_group. This is a list of strings that can be used to categorize the chunks inside the chunk_group.",
             "nullable": true
           },
           "tracking_id": {
@@ -7021,9 +7008,21 @@
             "description": "Description to assign to the chunk_group. Convenience field for you to avoid having to remember what the group is for. If not provided, the description will not be updated.",
             "nullable": true
           },
+          "metadata": {
+            "description": "Optional metadata to assign to the chunk_group. This is a JSON object that can store any additional information you want to associate with the chunks inside of the chunk_group.",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "description": "Name to assign to the chunk_group. Does not need to be unique. If not provided, the name will not be updated.",
+            "nullable": true
+          },
+          "tag_set": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional tags to assign to the chunk_group. This is a list of strings that can be used to categorize the chunks inside the chunk_group.",
             "nullable": true
           },
           "tracking_id": {
@@ -7269,7 +7268,7 @@
     },
     {
       "name": "events",
-      "description": "Notifications endpoint. Files are uploaded asynchronously and events are sent to the user when the upload is complete. Soon, chunk creation will work in the same way."
+      "description": "Notifications endpoint. Files are uploaded asynchronously and events are sent to the user when the upload is complete."
     },
     {
       "name": "topic",

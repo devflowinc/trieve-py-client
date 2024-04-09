@@ -25,19 +25,20 @@ from trieve_py_client.models.chunk_filter import ChunkFilter
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RecommendChunksRequest(BaseModel):
+class RecommendGroupChunksRequest(BaseModel):
     """
-    RecommendChunksRequest
+    RecommendGroupChunksRequest
     """ # noqa: E501
     filters: Optional[ChunkFilter] = None
-    limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The number of chunks to return. This is the number of chunks which will be returned in the response. The default is 10.")
-    negative_chunk_ids: Optional[List[StrictStr]] = Field(default=None, description="The ids of the chunks to be used as negative examples for the recommendation. The chunks in this array will be used to filter out similar chunks.")
-    negative_tracking_ids: Optional[List[StrictStr]] = Field(default=None, description="The tracking_ids of the chunks to be used as negative examples for the recommendation. The chunks in this array will be used to filter out similar chunks.")
-    positive_chunk_ids: Optional[List[StrictStr]] = Field(default=None, description="The ids of the chunks to be used as positive examples for the recommendation. The chunks in this array will be used to find similar chunks.")
-    positive_tracking_ids: Optional[List[StrictStr]] = Field(default=None, description="The tracking_ids of the chunks to be used as positive examples for the recommendation. The chunks in this array will be used to find similar chunks.")
+    group_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The number of chunks to fetch for each group. This is the number of chunks which will be returned in the response for each group. The default is 3. If this is set to a large number, we recommend setting slim_chunks to true to avoid returning the content and chunk_html of the chunks so as to reduce latency due to content download and serialization.")
+    limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The number of groups to return. This is the number of groups which will be returned in the response. The default is 10.")
+    negative_group_ids: Optional[List[StrictStr]] = Field(default=None, description="The ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups.")
+    negative_group_tracking_ids: Optional[List[StrictStr]] = Field(default=None, description="The ids of the groups to be used as negative examples for the recommendation. The groups in this array will be used to filter out similar groups.")
+    positive_group_ids: Optional[List[StrictStr]] = Field(default=None, description="The ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.")
+    positive_group_tracking_ids: Optional[List[StrictStr]] = Field(default=None, description="The ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.")
     slim_chunks: Optional[StrictBool] = Field(default=None, description="Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.")
     strategy: Optional[StrictStr] = Field(default=None, description="Strategy to use for recommendations, either \"average_vector\" or \"best_score\". The default is \"average_vector\". The \"average_vector\" strategy will construct a single average vector from the positive and negative samples then use it to perform a pseudo-search. The \"best_score\" strategy is more advanced and navigates the HNSW with a heuristic of picking edges where the point is closer to the positive samples than it is the negatives.")
-    __properties: ClassVar[List[str]] = ["filters", "limit", "negative_chunk_ids", "negative_tracking_ids", "positive_chunk_ids", "positive_tracking_ids", "slim_chunks", "strategy"]
+    __properties: ClassVar[List[str]] = ["filters", "group_size", "limit", "negative_group_ids", "negative_group_tracking_ids", "positive_group_ids", "positive_group_tracking_ids", "slim_chunks", "strategy"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +58,7 @@ class RecommendChunksRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RecommendChunksRequest from a JSON string"""
+        """Create an instance of RecommendGroupChunksRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,30 +87,35 @@ class RecommendChunksRequest(BaseModel):
         if self.filters is None and "filters" in self.model_fields_set:
             _dict['filters'] = None
 
+        # set to None if group_size (nullable) is None
+        # and model_fields_set contains the field
+        if self.group_size is None and "group_size" in self.model_fields_set:
+            _dict['group_size'] = None
+
         # set to None if limit (nullable) is None
         # and model_fields_set contains the field
         if self.limit is None and "limit" in self.model_fields_set:
             _dict['limit'] = None
 
-        # set to None if negative_chunk_ids (nullable) is None
+        # set to None if negative_group_ids (nullable) is None
         # and model_fields_set contains the field
-        if self.negative_chunk_ids is None and "negative_chunk_ids" in self.model_fields_set:
-            _dict['negative_chunk_ids'] = None
+        if self.negative_group_ids is None and "negative_group_ids" in self.model_fields_set:
+            _dict['negative_group_ids'] = None
 
-        # set to None if negative_tracking_ids (nullable) is None
+        # set to None if negative_group_tracking_ids (nullable) is None
         # and model_fields_set contains the field
-        if self.negative_tracking_ids is None and "negative_tracking_ids" in self.model_fields_set:
-            _dict['negative_tracking_ids'] = None
+        if self.negative_group_tracking_ids is None and "negative_group_tracking_ids" in self.model_fields_set:
+            _dict['negative_group_tracking_ids'] = None
 
-        # set to None if positive_chunk_ids (nullable) is None
+        # set to None if positive_group_ids (nullable) is None
         # and model_fields_set contains the field
-        if self.positive_chunk_ids is None and "positive_chunk_ids" in self.model_fields_set:
-            _dict['positive_chunk_ids'] = None
+        if self.positive_group_ids is None and "positive_group_ids" in self.model_fields_set:
+            _dict['positive_group_ids'] = None
 
-        # set to None if positive_tracking_ids (nullable) is None
+        # set to None if positive_group_tracking_ids (nullable) is None
         # and model_fields_set contains the field
-        if self.positive_tracking_ids is None and "positive_tracking_ids" in self.model_fields_set:
-            _dict['positive_tracking_ids'] = None
+        if self.positive_group_tracking_ids is None and "positive_group_tracking_ids" in self.model_fields_set:
+            _dict['positive_group_tracking_ids'] = None
 
         # set to None if slim_chunks (nullable) is None
         # and model_fields_set contains the field
@@ -125,7 +131,7 @@ class RecommendChunksRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RecommendChunksRequest from a dict"""
+        """Create an instance of RecommendGroupChunksRequest from a dict"""
         if obj is None:
             return None
 
@@ -134,11 +140,12 @@ class RecommendChunksRequest(BaseModel):
 
         _obj = cls.model_validate({
             "filters": ChunkFilter.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
+            "group_size": obj.get("group_size"),
             "limit": obj.get("limit"),
-            "negative_chunk_ids": obj.get("negative_chunk_ids"),
-            "negative_tracking_ids": obj.get("negative_tracking_ids"),
-            "positive_chunk_ids": obj.get("positive_chunk_ids"),
-            "positive_tracking_ids": obj.get("positive_tracking_ids"),
+            "negative_group_ids": obj.get("negative_group_ids"),
+            "negative_group_tracking_ids": obj.get("negative_group_tracking_ids"),
+            "positive_group_ids": obj.get("positive_group_ids"),
+            "positive_group_tracking_ids": obj.get("positive_group_tracking_ids"),
             "slim_chunks": obj.get("slim_chunks"),
             "strategy": obj.get("strategy")
         })

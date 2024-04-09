@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **dataset_id** | **str** |  | 
 **description** | **str** |  | 
 **id** | **str** |  | 
+**metadata** | **object** |  | [optional] 
 **name** | **str** |  | 
+**tag_set** | **str** |  | [optional] 
 **tracking_id** | **str** |  | [optional] 
 **updated_at** | **datetime** |  | 
 

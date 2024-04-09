@@ -152,7 +152,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **login**
-> login(content)
+> login(organization_id=organization_id, redirect_uri=redirect_uri, inv_code=inv_code)
 
 Login
 
@@ -163,7 +163,6 @@ Login  This will redirect you to the OAuth provider for authentication with emai
 
 ```python
 import trieve_py_client
-from trieve_py_client.models.auth_query import AuthQuery
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -178,11 +177,13 @@ configuration = trieve_py_client.Configuration(
 with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trieve_py_client.AuthApi(api_client)
-    content = trieve_py_client.AuthQuery() # AuthQuery | Query parameters for login to be included as kv pairs after ? on the request URL.
+    organization_id = 'organization_id_example' # str | ID of organization to authenticate into (optional)
+    redirect_uri = 'redirect_uri_example' # str | URL to redirect to after successful login (optional)
+    inv_code = 'inv_code_example' # str | Code sent via email as a result of successful call to send_invitation (optional)
 
     try:
         # Login
-        api_instance.login(content)
+        api_instance.login(organization_id=organization_id, redirect_uri=redirect_uri, inv_code=inv_code)
     except Exception as e:
         print("Exception when calling AuthApi->login: %s\n" % e)
 ```
@@ -194,7 +195,9 @@ with trieve_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content** | [**AuthQuery**](.md)| Query parameters for login to be included as kv pairs after ? on the request URL. | 
+ **organization_id** | **str**| ID of organization to authenticate into | [optional] 
+ **redirect_uri** | **str**| URL to redirect to after successful login | [optional] 
+ **inv_code** | **str**| Code sent via email as a result of successful call to send_invitation | [optional] 
 
 ### Return type
 

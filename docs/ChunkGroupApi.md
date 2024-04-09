@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 Delete Group
 
-Delete Group  This will delete a chunk_group. This will not delete the chunks that are in the group. We will soon support deleting a chunk_group along with its member chunks.
+Delete Group  This will delete a chunk_group. If you set delete_chunks to true, it will also delete the chunks within the group.
 
 ### Example
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 Get Chunks in Group
 
-Get Chunks in Group  Route to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Support for custom page size is coming soon.
+Get Chunks in Group  Route to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Page is 1-indexed.
 
 ### Example
 
@@ -601,7 +601,7 @@ Name | Type | Description  | Notes
 
 Get Chunks in Group by Tracking ID
 
-Get Chunks in Group by Tracking ID  Route to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Support for custom page size is coming soon.
+Get Chunks in Group by Tracking ID  Route to get all chunks for a group. The response is paginated, with each page containing 10 chunks. Support for custom page size is coming soon. Page is 1-indexed.
 
 ### Example
 
@@ -846,7 +846,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recommended_groups**
-> RecommendGroupChunkResponseTypes get_recommended_groups(tr_dataset, reccomend_group_chunks_request)
+> RecommendGroupChunkResponseTypes get_recommended_groups(tr_dataset, recommend_group_chunks_request)
 
 Get Recommended Groups
 
@@ -858,8 +858,8 @@ Get Recommended Groups  Route to get recommended groups. This route will return 
 
 ```python
 import trieve_py_client
-from trieve_py_client.models.reccomend_group_chunks_request import ReccomendGroupChunksRequest
 from trieve_py_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
+from trieve_py_client.models.recommend_group_chunks_request import RecommendGroupChunksRequest
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -885,11 +885,11 @@ with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
-    reccomend_group_chunks_request = trieve_py_client.ReccomendGroupChunksRequest() # ReccomendGroupChunksRequest | JSON request payload to get recommendations of chunks similar to the chunks in the request
+    recommend_group_chunks_request = trieve_py_client.RecommendGroupChunksRequest() # RecommendGroupChunksRequest | JSON request payload to get recommendations of chunks similar to the chunks in the request
 
     try:
         # Get Recommended Groups
-        api_response = api_instance.get_recommended_groups(tr_dataset, reccomend_group_chunks_request)
+        api_response = api_instance.get_recommended_groups(tr_dataset, recommend_group_chunks_request)
         print("The response of ChunkGroupApi->get_recommended_groups:\n")
         pprint(api_response)
     except Exception as e:
@@ -904,7 +904,7 @@ with trieve_py_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tr_dataset** | **str**| The dataset id to use for the request | 
- **reccomend_group_chunks_request** | [**ReccomendGroupChunksRequest**](ReccomendGroupChunksRequest.md)| JSON request payload to get recommendations of chunks similar to the chunks in the request | 
+ **recommend_group_chunks_request** | [**RecommendGroupChunksRequest**](RecommendGroupChunksRequest.md)| JSON request payload to get recommendations of chunks similar to the chunks in the request | 
 
 ### Return type
 
@@ -968,7 +968,7 @@ with trieve_py_client.ApiClient(configuration) as api_client:
     api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     dataset_id = 'dataset_id_example' # str | The id of the dataset to fetch groups for.
-    page = 56 # int | The page of groups to fetch. Each page contains 10 groups. Support for custom page size is coming soon.
+    page = 56 # int | The page of groups to fetch. Page is 1-indexed.
 
     try:
         # Get Groups for Dataset
@@ -988,7 +988,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tr_dataset** | **str**| The dataset id to use for the request | 
  **dataset_id** | **str**| The id of the dataset to fetch groups for. | 
- **page** | **int**| The page of groups to fetch. Each page contains 10 groups. Support for custom page size is coming soon. | 
+ **page** | **int**| The page of groups to fetch. Page is 1-indexed. | 
 
 ### Return type
 

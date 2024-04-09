@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chunk_id** | **str** | Id of the chunk to make a member of the group. | 
+**chunk_id** | **str** | Id of the chunk to make a member of the group. | [optional] 
+**tracking_id** | **str** | Tracking Id of the chunk to make a member of the group. | [optional] 
 
 ## Example
 

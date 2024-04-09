@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Get events for the dataset
 
-Get events for the dataset  Get events for the auth'ed user. Currently, this is only for events belonging to the auth'ed user. Soon, we plan to associate events to datasets instead of users.
+Get events for the dataset  Get events for the dataset specified by the TR-Dataset header.
 
 ### Example
 
