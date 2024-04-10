@@ -846,7 +846,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recommended_groups**
-> RecommendGroupChunkResponseTypes get_recommended_groups(tr_dataset, recommend_group_chunks_request)
+> List[GroupScoreChunk] get_recommended_groups(tr_dataset, recommend_group_chunks_request)
 
 Get Recommended Groups
 
@@ -858,7 +858,7 @@ Get Recommended Groups  Route to get recommended groups. This route will return 
 
 ```python
 import trieve_py_client
-from trieve_py_client.models.recommend_group_chunk_response_types import RecommendGroupChunkResponseTypes
+from trieve_py_client.models.group_score_chunk import GroupScoreChunk
 from trieve_py_client.models.recommend_group_chunks_request import RecommendGroupChunksRequest
 from trieve_py_client.rest import ApiException
 from pprint import pprint
@@ -908,7 +908,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RecommendGroupChunkResponseTypes**](RecommendGroupChunkResponseTypes.md)
+[**List[GroupScoreChunk]**](GroupScoreChunk.md)
 
 ### Authorization
 
@@ -923,7 +923,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | JSON body representing the groups which are similar to the groups in the request |  -  |
+**200** | JSON body representing the groups which are similar to the positive groups and dissimilar to the negative ones if slim_chunks is false in the request |  -  |
+**206** | JSON body representing the groups which are similar to the positive groups and dissimilar to the negative ones if slim_chunks is false in the request |  -  |
 **400** | Service error relating to to getting similar chunks |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1095,7 +1096,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_over_groups**
-> SearchOverGroupsResponseTypes search_over_groups(tr_dataset, search_over_groups_data)
+> SearchOverGroupsResults search_over_groups(tr_dataset, search_over_groups_data)
 
 Search Over Groups
 
@@ -1108,7 +1109,7 @@ Search Over Groups  This route allows you to get groups as results instead of ch
 ```python
 import trieve_py_client
 from trieve_py_client.models.search_over_groups_data import SearchOverGroupsData
-from trieve_py_client.models.search_over_groups_response_types import SearchOverGroupsResponseTypes
+from trieve_py_client.models.search_over_groups_results import SearchOverGroupsResults
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -1157,7 +1158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchOverGroupsResponseTypes**](SearchOverGroupsResponseTypes.md)
+[**SearchOverGroupsResults**](SearchOverGroupsResults.md)
 
 ### Authorization
 
@@ -1172,13 +1173,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Group chunks which are similar to the embedding vector of the search query |  -  |
-**400** | Service error relating to getting the groups that the chunk is in |  -  |
+**200** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is false or unspecified in the request body |  -  |
+**206** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is true in the request body |  -  |
+**400** | Service error relating to searching over groups |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_within_group**
-> SearchWithinGroupResponseTypes search_within_group(tr_dataset, search_within_group_data)
+> SearchWithinGroupResults search_within_group(tr_dataset, search_within_group_data)
 
 Search Within Group
 
@@ -1191,7 +1193,7 @@ Search Within Group  This route allows you to search only within a group. This i
 ```python
 import trieve_py_client
 from trieve_py_client.models.search_within_group_data import SearchWithinGroupData
-from trieve_py_client.models.search_within_group_response_types import SearchWithinGroupResponseTypes
+from trieve_py_client.models.search_within_group_results import SearchWithinGroupResults
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -1240,7 +1242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchWithinGroupResponseTypes**](SearchWithinGroupResponseTypes.md)
+[**SearchWithinGroupResults**](SearchWithinGroupResults.md)
 
 ### Authorization
 
@@ -1255,7 +1257,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Group chunks which are similar to the embedding vector of the search query |  -  |
+**200** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is false in the request |  -  |
+**206** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is true in the request |  -  |
 **400** | Service error relating to getting the groups that the chunk is in |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

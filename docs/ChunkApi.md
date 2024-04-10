@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recommended_chunks**
-> RecommendChunksResponseTypes get_recommended_chunks(tr_dataset, recommend_chunks_request)
+> List[ChunkMetadataWithScore] get_recommended_chunks(tr_dataset, recommend_chunks_request)
 
 Get Recommended Chunks
 
@@ -601,8 +601,8 @@ Get Recommended Chunks  Get recommendations of chunks similar to the chunks in t
 
 ```python
 import trieve_py_client
+from trieve_py_client.models.chunk_metadata_with_score import ChunkMetadataWithScore
 from trieve_py_client.models.recommend_chunks_request import RecommendChunksRequest
-from trieve_py_client.models.recommend_chunks_response_types import RecommendChunksResponseTypes
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RecommendChunksResponseTypes**](RecommendChunksResponseTypes.md)
+[**List[ChunkMetadataWithScore]**](ChunkMetadataWithScore.md)
 
 ### Authorization
 
@@ -666,13 +666,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chunks with embedding vectors which are similar to those in the request body |  -  |
+**200** | Chunks with embedding vectors which are similar to positives and dissimilar to negatives if slim_chunks is false in the request |  -  |
+**206** | Chunks with embedding vectors which are similar to positives and dissimilar to negatives if slim_chunks is true in the request |  -  |
 **400** | Service error relating to to getting similar chunks |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_chunk**
-> SearchChunkResponseTypes search_chunk(tr_dataset, search_chunk_data)
+> SearchChunkQueryResponseBody search_chunk(tr_dataset, search_chunk_data)
 
 Search
 
@@ -685,7 +686,7 @@ Search  This route provides the primary search functionality for the API. It can
 ```python
 import trieve_py_client
 from trieve_py_client.models.search_chunk_data import SearchChunkData
-from trieve_py_client.models.search_chunk_response_types import SearchChunkResponseTypes
+from trieve_py_client.models.search_chunk_query_response_body import SearchChunkQueryResponseBody
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -734,7 +735,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchChunkResponseTypes**](SearchChunkResponseTypes.md)
+[**SearchChunkQueryResponseBody**](SearchChunkQueryResponseBody.md)
 
 ### Authorization
 
@@ -749,7 +750,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chunks with embedding vectors which are similar to those in the request body |  -  |
+**200** | Chunks with embedding vectors which are similar to those in the request body if slim_chunks is false or not specified in the request body |  -  |
+**206** | Chunks with embedding vectors which are similar to those in the request body if slim_chunks is true in the request body |  -  |
 **400** | Service error relating to searching |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

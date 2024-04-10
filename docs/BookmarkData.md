@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chunks** | [**List[ChunkMetadataWithFileData]**](ChunkMetadataWithFileData.md) |  | 
+**chunks** | [**List[ChunkMetadata]**](ChunkMetadata.md) |  | 
 **group** | [**ChunkGroup**](ChunkGroup.md) |  | 
 **total_pages** | **int** |  | 
 

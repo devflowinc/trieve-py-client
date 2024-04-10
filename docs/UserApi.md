@@ -4,8 +4,8 @@ All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_user_api_key**](UserApi.md#delete_user_api_key) | **DELETE** /api/user/delete_api_key/{api_key_id} | Delete User Api Key
-[**set_user_api_key**](UserApi.md#set_user_api_key) | **POST** /api/user/set_api_key | Set User Api Key
+[**delete_user_api_key**](UserApi.md#delete_user_api_key) | **DELETE** /api/user/api_key/{api_key_id} | Delete User Api Key
+[**set_user_api_key**](UserApi.md#set_user_api_key) | **POST** /api/user/api_key | Set User Api Key
 [**update_user**](UserApi.md#update_user) | **PUT** /api/user | Update User
 
 
