@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.6.7"
+    "version": "0.6.9"
   },
   "servers": [
     {
@@ -4726,6 +4726,11 @@
           },
           "server_configuration": {
             "description": "Server configuration for the dataset, can be arbitrary JSON. We recommend setting to `{}` to start. See docs.trieve.ai for more information or adjust with the admin dashboard."
+          },
+          "tracking_id": {
+            "type": "string",
+            "description": "Optional tracking ID for the dataset. Can be used to track the dataset in external systems.",
+            "nullable": true
           }
         },
         "example": {
@@ -4840,6 +4845,10 @@
             "format": "uuid"
           },
           "server_configuration": {},
+          "tracking_id": {
+            "type": "string",
+            "nullable": true
+          },
           "updated_at": {
             "type": "string",
             "format": "date-time"
@@ -4856,6 +4865,7 @@
           "server_configuration": {
             "key": "value"
           },
+          "tracking_id": "3",
           "updated_at": "2021-01-01T00:00:00"
         }
       },
@@ -4918,6 +4928,10 @@
             "type": "string",
             "format": "uuid"
           },
+          "tracking_id": {
+            "type": "string",
+            "nullable": true
+          },
           "updated_at": {
             "type": "string",
             "format": "date-time"
@@ -4931,6 +4945,7 @@
           "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
           "name": "Trieve",
           "organization_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
+          "tracking_id": "3",
           "updated_at": "2021-01-01T00:00:00"
         }
       },
@@ -5788,6 +5803,11 @@
             "description": "The tracking_ids of the chunks to be used as positive examples for the recommendation. The chunks in this array will be used to find similar chunks.",
             "nullable": true
           },
+          "recommend_type": {
+            "type": "string",
+            "description": "The type of recommendation to make. This lets you choose whether to recommend based off of `semantic` or `fulltext` similarity. The default is `semantic`.",
+            "nullable": true
+          },
           "slim_chunks": {
             "type": "boolean",
             "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
@@ -5857,6 +5877,11 @@
               "type": "string"
             },
             "description": "The ids of the groups to be used as positive examples for the recommendation. The groups in this array will be used to find similar groups.",
+            "nullable": true
+          },
+          "recommend_type": {
+            "type": "string",
+            "description": "The type of recommendation to make. This lets you choose whether to recommend based off of `semantic` or `fulltext` similarity. The default is `semantic`.",
             "nullable": true
           },
           "slim_chunks": {
@@ -7048,9 +7073,6 @@
       },
       "UpdateDatasetRequest": {
         "type": "object",
-        "required": [
-          "dataset_id"
-        ],
         "properties": {
           "client_configuration": {
             "description": "The new client configuration of the dataset, can be arbitrary JSON. See docs.trieve.ai for more information. If not provided, the client configuration will not be updated.",
@@ -7059,7 +7081,8 @@
           "dataset_id": {
             "type": "string",
             "format": "uuid",
-            "description": "The id of the dataset you want to update."
+            "description": "The id of the dataset you want to update.",
+            "nullable": true
           },
           "dataset_name": {
             "type": "string",
@@ -7068,6 +7091,11 @@
           },
           "server_configuration": {
             "description": "The new server configuration of the dataset, can be arbitrary JSON. See docs.trieve.ai for more information. If not provided, the server configuration will not be updated.",
+            "nullable": true
+          },
+          "tracking_id": {
+            "type": "string",
+            "description": "tracking ID for the dataset. Can be used to track the dataset in external systems.",
             "nullable": true
           }
         },

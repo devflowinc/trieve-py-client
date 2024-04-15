@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | 
 **name** | **str** |  | 
 **organization_id** | **str** |  | 
+**tracking_id** | **str** |  | [optional] 
 **updated_at** | **datetime** |  | 
 
 ## Example

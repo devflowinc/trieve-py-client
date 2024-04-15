@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **dataset_name** | **str** | Name of the dataset. Must be unique within the organization. | 
 **organization_id** | **str** | Organization ID that the dataset will belong to. | 
 **server_configuration** | **object** | Server configuration for the dataset, can be arbitrary JSON. We recommend setting to &#x60;{}&#x60; to start. See docs.trieve.ai for more information or adjust with the admin dashboard. | 
+**tracking_id** | **str** | Optional tracking ID for the dataset. Can be used to track the dataset in external systems. | [optional] 
 
 ## Example
 

@@ -6,9 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_configuration** | **object** | The new client configuration of the dataset, can be arbitrary JSON. See docs.trieve.ai for more information. If not provided, the client configuration will not be updated. | [optional] 
-**dataset_id** | **str** | The id of the dataset you want to update. | 
+**dataset_id** | **str** | The id of the dataset you want to update. | [optional] 
 **dataset_name** | **str** | The new name of the dataset. Must be unique within the organization. If not provided, the name will not be updated. | [optional] 
 **server_configuration** | **object** | The new server configuration of the dataset, can be arbitrary JSON. See docs.trieve.ai for more information. If not provided, the server configuration will not be updated. | [optional] 
+**tracking_id** | **str** | tracking ID for the dataset. Can be used to track the dataset in external systems. | [optional] 
 
 ## Example
 
