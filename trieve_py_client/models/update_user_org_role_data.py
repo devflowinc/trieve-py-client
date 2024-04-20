@@ -18,19 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
-from typing import Any, ClassVar, Dict, List
-from trieve_py_client.models.group_score_chunk import GroupScoreChunk
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SearchOverGroupsResults(BaseModel):
+class UpdateUserOrgRoleData(BaseModel):
     """
-    SearchOverGroupsResults
+    UpdateUserOrgRoleData
     """ # noqa: E501
-    group_chunks: List[GroupScoreChunk]
-    total_chunk_pages: StrictInt
-    __properties: ClassVar[List[str]] = ["group_chunks", "total_chunk_pages"]
+    organization_id: StrictStr = Field(description="The id of the organization to update the user for.")
+    role: StrictInt = Field(description="Either 0 (user), 1 (admin), or 2 (owner). If not provided, the current role will be used. The auth'ed user must have a role greater than or equal to the role being assigned.")
+    user_id: Optional[StrictStr] = Field(default=None, description="The id of the user to update, if not provided, the auth'ed user will be updated. If provided, the auth'ed user must be an admin (1) or owner (2) of the organization.")
+    __properties: ClassVar[List[str]] = ["organization_id", "role", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class SearchOverGroupsResults(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SearchOverGroupsResults from a JSON string"""
+        """Create an instance of UpdateUserOrgRoleData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +71,16 @@ class SearchOverGroupsResults(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in group_chunks (list)
-        _items = []
-        if self.group_chunks:
-            for _item in self.group_chunks:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['group_chunks'] = _items
+        # set to None if user_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.user_id is None and "user_id" in self.model_fields_set:
+            _dict['user_id'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SearchOverGroupsResults from a dict"""
+        """Create an instance of UpdateUserOrgRoleData from a dict"""
         if obj is None:
             return None
 
@@ -90,8 +88,9 @@ class SearchOverGroupsResults(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "group_chunks": [GroupScoreChunk.from_dict(_item) for _item in obj["group_chunks"]] if obj.get("group_chunks") is not None else None,
-            "total_chunk_pages": obj.get("total_chunk_pages")
+            "organization_id": obj.get("organization_id"),
+            "role": obj.get("role"),
+            "user_id": obj.get("user_id")
         })
         return _obj
 

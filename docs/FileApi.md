@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **delete_file_handler**
-> delete_file_handler(tr_dataset, file_id, delete_chunks)
+> delete_file_handler(tr_dataset, file_id)
 
 Delete File
 
@@ -49,11 +49,10 @@ with trieve_py_client.ApiClient(configuration) as api_client:
     api_instance = trieve_py_client.FileApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     file_id = 'file_id_example' # str | The id of the file to delete
-    delete_chunks = True # bool | Whether or not to delete the chunks associated with the file
 
     try:
         # Delete File
-        api_instance.delete_file_handler(tr_dataset, file_id, delete_chunks)
+        api_instance.delete_file_handler(tr_dataset, file_id)
     except Exception as e:
         print("Exception when calling FileApi->delete_file_handler: %s\n" % e)
 ```
@@ -67,7 +66,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tr_dataset** | **str**| The dataset id to use for the request | 
  **file_id** | **str**| The id of the file to delete | 
- **delete_chunks** | **bool**| Whether or not to delete the chunks associated with the file | 
 
 ### Return type
 

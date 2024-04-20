@@ -94,7 +94,7 @@ docs/UpdateDatasetRequest.md
 docs/UpdateGroupByTrackingIDData.md
 docs/UpdateOrganizationData.md
 docs/UpdateTopicData.md
-docs/UpdateUserData.md
+docs/UpdateUserOrgRoleData.md
 docs/UploadFileData.md
 docs/UploadFileResult.md
 docs/UserApi.md
@@ -106,6 +106,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_update_user_org_role_data.py
 tox.ini
 trieve_py_client/__init__.py
 trieve_py_client/api/__init__.py
@@ -206,7 +207,7 @@ trieve_py_client/models/update_dataset_request.py
 trieve_py_client/models/update_group_by_tracking_id_data.py
 trieve_py_client/models/update_organization_data.py
 trieve_py_client/models/update_topic_data.py
-trieve_py_client/models/update_user_data.py
+trieve_py_client/models/update_user_org_role_data.py
 trieve_py_client/models/upload_file_data.py
 trieve_py_client/models/upload_file_result.py
 trieve_py_client/models/user_organization.py

@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> SlimUser update_user(update_user_data)
+> update_user(update_user_org_role_data)
 
 Update User
 
@@ -183,8 +183,7 @@ Update User  Update a user's information. If the user_id is not provided, the au
 
 ```python
 import trieve_py_client
-from trieve_py_client.models.slim_user import SlimUser
-from trieve_py_client.models.update_user_data import UpdateUserData
+from trieve_py_client.models.update_user_org_role_data import UpdateUserOrgRoleData
 from trieve_py_client.rest import ApiException
 from pprint import pprint
 
@@ -209,13 +208,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 with trieve_py_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trieve_py_client.UserApi(api_client)
-    update_user_data = trieve_py_client.UpdateUserData() # UpdateUserData | JSON request payload to update user information for the auth'ed user
+    update_user_org_role_data = trieve_py_client.UpdateUserOrgRoleData() # UpdateUserOrgRoleData | JSON request payload to update user information for the auth'ed user
 
     try:
         # Update User
-        api_response = api_instance.update_user(update_user_data)
-        print("The response of UserApi->update_user:\n")
-        pprint(api_response)
+        api_instance.update_user(update_user_org_role_data)
     except Exception as e:
         print("Exception when calling UserApi->update_user: %s\n" % e)
 ```
@@ -227,11 +224,11 @@ with trieve_py_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_user_data** | [**UpdateUserData**](UpdateUserData.md)| JSON request payload to update user information for the auth&#39;ed user | 
+ **update_user_org_role_data** | [**UpdateUserOrgRoleData**](UpdateUserOrgRoleData.md)| JSON request payload to update user information for the auth&#39;ed user | 
 
 ### Return type
 
-[**SlimUser**](SlimUser.md)
+void (empty response body)
 
 ### Authorization
 
@@ -246,7 +243,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | JSON body representing the updated user information |  -  |
+**204** | Confirmation that the user&#39;s role was updated |  -  |
 **400** | Service error relating to updating the user |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

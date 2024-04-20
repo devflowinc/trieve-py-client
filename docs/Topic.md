@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **deleted** | **bool** |  | 
 **id** | **str** |  | 
 **name** | **str** |  | 
+**owner_id** | **str** |  | 
 **updated_at** | **datetime** |  | 
-**user_id** | **str** |  | 
 
 ## Example
 

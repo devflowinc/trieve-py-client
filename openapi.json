@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.6.9"
+    "version": "0.7.2"
   },
   "servers": [
     {
@@ -2558,15 +2558,6 @@
               "type": "string",
               "format": "uuid"
             }
-          },
-          {
-            "name": "delete_chunks",
-            "in": "query",
-            "description": "Whether or not to delete the chunks associated with the file",
-            "required": true,
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
         "responses": {
@@ -3461,7 +3452,7 @@
           "topic"
         ],
         "summary": "Create Topic",
-        "description": "Create Topic\n\nCreate a new chat topic. Topics are attached to a user and act as a coordinator for memory of gen-AI chat sessions. We are considering refactoring this resource of the API soon.",
+        "description": "Create Topic\n\nCreate a new chat topic. Topics are attached to a owner_id's and act as a coordinator for conversation message history of gen-AI chat sessions.",
         "operationId": "create_topic",
         "parameters": [
           {
@@ -3568,23 +3559,22 @@
         ]
       }
     },
-    "/api/topic/user/{user_id}": {
+    "/api/topic/owner/{owner_id}": {
       "get": {
         "tags": [
           "topic"
         ],
-        "summary": "Get All Topics for User",
-        "description": "Get All Topics for User\n\nGet all topics belonging to a the auth'ed user. Soon, we plan to allow specification of the user for this route and include pagination.",
-        "operationId": "get_all_topics_for_user",
+        "summary": "Get All Topics for Owner ID",
+        "description": "Get All Topics for Owner ID\n\nGet all topics belonging to an arbitary owner_id. This is useful for managing message history and chat sessions. It is common to use a browser fingerprint or your user's id as the owner_id.",
+        "operationId": "get_all_topics_for_owner_id",
         "parameters": [
           {
-            "name": "user_id",
+            "name": "owner_id",
             "in": "path",
-            "description": "The id of the user to get topics for",
+            "description": "The owner_id to get topics of; A common approach is to use a browser fingerprint or your user's id",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           },
           {
@@ -3599,7 +3589,7 @@
         ],
         "responses": {
           "200": {
-            "description": "All topics belonging to a given user",
+            "description": "All topics belonging to a given owner_id",
             "content": {
               "application/json": {
                 "schema": {
@@ -3612,7 +3602,7 @@
             }
           },
           "400": {
-            "description": "Service error relating to topic get",
+            "description": "Service error relating to getting topics for the owner_id",
             "content": {
               "application/json": {
                 "schema": {
@@ -3697,22 +3687,15 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateUserData"
+                "$ref": "#/components/schemas/UpdateUserOrgRoleData"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "JSON body representing the updated user information",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SlimUser"
-                }
-              }
-            }
+          "204": {
+            "description": "Confirmation that the user's role was updated"
           },
           "400": {
             "description": "Service error relating to updating the user",
@@ -4076,12 +4059,6 @@
           "convert_html_to_text": {
             "type": "boolean",
             "description": "Convert HTML to raw text before processing to avoid adding noise to the vector embeddings. By default this is true. If you are using HTML content that you want to be included in the vector embeddings, set this to false.",
-            "nullable": true
-          },
-          "file_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "File_uuid is the uuid of the file that the chunk is associated with. This is used to associate chunks with files. This is useful for when you want to delete a file and all of its associated chunks.",
             "nullable": true
           },
           "group_ids": {
@@ -4532,7 +4509,8 @@
       "ClientDatasetConfiguration": {
         "type": "object",
         "required": [
-          "FILE_NAME_KEY"
+          "FILE_NAME_KEY",
+          "IMAGE_METADATA_KEY"
         ],
         "properties": {
           "CREATE_CHUNK_FEATURE": {
@@ -4556,6 +4534,9 @@
           "FRONTMATTER_VALS": {
             "type": "string",
             "nullable": true
+          },
+          "IMAGE_METADATA_KEY": {
+            "type": "string"
           },
           "IMAGE_RANGE_END_KEY": {
             "type": "string",
@@ -4586,6 +4567,7 @@
           "FILE_NAME_KEY": "file_name_key",
           "FILTER_ITEMS": [],
           "FRONTMATTER_VALS": "frontmatter vals",
+          "IMAGE_METADATA_KEY": ".image_url",
           "IMAGE_RANGE_END_KEY": "image range end key",
           "IMAGE_RANGE_START_KEY": "image range start key",
           "LINES_BEFORE_SHOW_MORE": 10,
@@ -4798,6 +4780,9 @@
       },
       "CreateTopicData": {
         "type": "object",
+        "required": [
+          "owner_id"
+        ],
         "properties": {
           "first_user_message": {
             "type": "string",
@@ -4813,6 +4798,10 @@
             "type": "string",
             "description": "The name of the topic. If this is not provided, the topic name is generated from the first_user_message.",
             "nullable": true
+          },
+          "owner_id": {
+            "type": "string",
+            "description": "The owner_id of the topic. This is typically a browser fingerprint or your user's id. It is used to group topics together for a user."
           }
         }
       },
@@ -5348,7 +5337,7 @@
             "items": {
               "type": "string"
             },
-            "description": "The types of events to get. Any combination of file_uploaded, chunk_uploaded, chunk_action_failed, or chunk_updated. Leave undefined to get all events.",
+            "description": "The types of events to get. Any combination of file_uploaded, chunk_uploaded, chunk_action_failed, chunk_updated, or qdrant_index_failed. Leave undefined to get all events.",
             "nullable": true
           },
           "page": {
@@ -6844,12 +6833,12 @@
         "type": "object",
         "required": [
           "id",
-          "user_id",
           "name",
           "deleted",
           "created_at",
           "updated_at",
-          "dataset_id"
+          "dataset_id",
+          "owner_id"
         ],
         "properties": {
           "created_at": {
@@ -6870,13 +6859,12 @@
           "name": {
             "type": "string"
           },
+          "owner_id": {
+            "type": "string"
+          },
           "updated_at": {
             "type": "string",
             "format": "date-time"
-          },
-          "user_id": {
-            "type": "string",
-            "format": "uuid"
           }
         },
         "example": {
@@ -6885,8 +6873,8 @@
           "deleted": false,
           "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
           "name": "Trieve",
-          "updated_at": "2021-01-01T00:00:00",
-          "user_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3"
+          "owner_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
+          "updated_at": "2021-01-01T00:00:00"
         }
       },
       "UpdateChunkByTrackingIdData": {
@@ -7176,17 +7164,13 @@
           }
         }
       },
-      "UpdateUserData": {
+      "UpdateUserOrgRoleData": {
         "type": "object",
         "required": [
-          "organization_id"
+          "organization_id",
+          "role"
         ],
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "In the sense of a legal name, not a username. The new name to assign to the user, if not provided, the current name will be used.",
-            "nullable": true
-          },
           "organization_id": {
             "type": "string",
             "format": "uuid",
@@ -7195,8 +7179,7 @@
           "role": {
             "type": "integer",
             "format": "int32",
-            "description": "Either 0 (user), 1 (admin), or 2 (owner). If not provided, the current role will be used. The auth'ed user must have a role greater than or equal to the role being assigned.",
-            "nullable": true
+            "description": "Either 0 (user), 1 (admin), or 2 (owner). If not provided, the current role will be used. The auth'ed user must have a role greater than or equal to the role being assigned."
           },
           "user_id": {
             "type": "string",
