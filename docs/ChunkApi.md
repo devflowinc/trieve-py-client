@@ -11,8 +11,10 @@ Method | HTTP request | Description
 [**generate_off_chunks**](ChunkApi.md#generate_off_chunks) | **POST** /api/chunk/generate | RAG on Specified Chunks
 [**get_chunk_by_id**](ChunkApi.md#get_chunk_by_id) | **GET** /api/chunk/{chunk_id} | Get Chunk By Id
 [**get_chunk_by_tracking_id**](ChunkApi.md#get_chunk_by_tracking_id) | **GET** /api/chunk/tracking_id/{tracking_id} | Get Chunk By Tracking Id
+[**get_chunks_by_ids**](ChunkApi.md#get_chunks_by_ids) | **POST** /api/chunks | Get Chunks By Ids
+[**get_chunks_by_tracking_ids**](ChunkApi.md#get_chunks_by_tracking_ids) | **POST** /api/chunks/tracking | Get Chunks By TrackingIds
 [**get_recommended_chunks**](ChunkApi.md#get_recommended_chunks) | **POST** /api/chunk/recommend | Get Recommended Chunks
-[**search_chunk**](ChunkApi.md#search_chunk) | **POST** /api/chunk/search | Search
+[**search_chunks**](ChunkApi.md#search_chunks) | **POST** /api/chunk/search | Search
 [**update_chunk**](ChunkApi.md#update_chunk) | **PUT** /api/chunk | Update Chunk
 [**update_chunk_by_tracking_id**](ChunkApi.md#update_chunk_by_tracking_id) | **PUT** /api/chunk/tracking_id/update | Update Chunk By Tracking Id
 
@@ -22,7 +24,7 @@ Method | HTTP request | Description
 
 Create or Upsert Chunk or Chunks
 
-Create or Upsert Chunk or Chunks  Create a new chunk. If the chunk has the same tracking_id as an existing chunk, the request will fail. Once a chunk is created, it can be searched for using the search endpoint.
+Create or Upsert Chunk or Chunks  Create a new chunk. If the chunk has the same tracking_id as an existing chunk, the request will fail. Once a chunk is created, it can be searched for using the search endpoint. If uploading in bulk, the maximum amount of chunks that can be uploaded at once is 120 chunks.
 
 ### Example
 
@@ -503,6 +505,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | chunk with the id that you were searching for |  -  |
 **400** | Service error relating to fidning a chunk by tracking_id |  -  |
+**404** | Chunk not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -584,6 +587,173 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | chunk with the tracking_id that you were searching for |  -  |
+**400** | Service error relating to fidning a chunk by tracking_id |  -  |
+**404** | Chunk not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_chunks_by_ids**
+> List[ChunkMetadata] get_chunks_by_ids(tr_dataset, get_chunks_data)
+
+Get Chunks By Ids
+
+Get Chunks By Ids  Get multiple chunks by multiple ids.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+
+```python
+import trieve_py_client
+from trieve_py_client.models.chunk_metadata import ChunkMetadata
+from trieve_py_client.models.get_chunks_data import GetChunksData
+from trieve_py_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.trieve.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = trieve_py_client.Configuration(
+    host = "https://api.trieve.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with trieve_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = trieve_py_client.ChunkApi(api_client)
+    tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
+    get_chunks_data = trieve_py_client.GetChunksData() # GetChunksData | JSON request payload to get the chunks in the request
+
+    try:
+        # Get Chunks By Ids
+        api_response = api_instance.get_chunks_by_ids(tr_dataset, get_chunks_data)
+        print("The response of ChunkApi->get_chunks_by_ids:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ChunkApi->get_chunks_by_ids: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tr_dataset** | **str**| The dataset id to use for the request | 
+ **get_chunks_data** | [**GetChunksData**](GetChunksData.md)| JSON request payload to get the chunks in the request | 
+
+### Return type
+
+[**List[ChunkMetadata]**](ChunkMetadata.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | chunks with the id that you were searching for |  -  |
+**400** | Service error relating to fidning a chunk by tracking_id |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_chunks_by_tracking_ids**
+> ChunkMetadata get_chunks_by_tracking_ids(tr_dataset, get_tracking_chunks_data)
+
+Get Chunks By TrackingIds
+
+Get Chunks By TrackingIds  Get multiple chunks by ids.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+
+```python
+import trieve_py_client
+from trieve_py_client.models.chunk_metadata import ChunkMetadata
+from trieve_py_client.models.get_tracking_chunks_data import GetTrackingChunksData
+from trieve_py_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.trieve.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = trieve_py_client.Configuration(
+    host = "https://api.trieve.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with trieve_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = trieve_py_client.ChunkApi(api_client)
+    tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
+    get_tracking_chunks_data = trieve_py_client.GetTrackingChunksData() # GetTrackingChunksData | JSON request payload to get the chunks in the request
+
+    try:
+        # Get Chunks By TrackingIds
+        api_response = api_instance.get_chunks_by_tracking_ids(tr_dataset, get_tracking_chunks_data)
+        print("The response of ChunkApi->get_chunks_by_tracking_ids:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ChunkApi->get_chunks_by_tracking_ids: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tr_dataset** | **str**| The dataset id to use for the request | 
+ **get_tracking_chunks_data** | [**GetTrackingChunksData**](GetTrackingChunksData.md)| JSON request payload to get the chunks in the request | 
+
+### Return type
+
+[**ChunkMetadata**](ChunkMetadata.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | chunk with the id that you were searching for |  -  |
 **400** | Service error relating to fidning a chunk by tracking_id |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -672,8 +842,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **search_chunk**
-> SearchChunkQueryResponseBody search_chunk(tr_dataset, search_chunk_data)
+# **search_chunks**
+> SearchChunkQueryResponseBody search_chunks(tr_dataset, search_chunk_data)
 
 Search
 
@@ -716,11 +886,11 @@ with trieve_py_client.ApiClient(configuration) as api_client:
 
     try:
         # Search
-        api_response = api_instance.search_chunk(tr_dataset, search_chunk_data)
-        print("The response of ChunkApi->search_chunk:\n")
+        api_response = api_instance.search_chunks(tr_dataset, search_chunk_data)
+        print("The response of ChunkApi->search_chunks:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ChunkApi->search_chunk: %s\n" % e)
+        print("Exception when calling ChunkApi->search_chunks: %s\n" % e)
 ```
 
 

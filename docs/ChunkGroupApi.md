@@ -509,6 +509,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | JSON body representing the group with the given tracking id |  -  |
 **400** | Service error relating to getting the group with the given tracking id |  -  |
+**404** | Group not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -593,6 +594,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Chunks present within the specified group |  -  |
 **400** | Service error relating to getting the groups that the chunk is in |  -  |
+**404** | Group not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -677,6 +679,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Chunks present within the specified group |  -  |
 **400** | Service error relating to getting the groups that the chunk is in |  -  |
+**404** | Group not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -759,6 +762,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | JSON body representing the group with the given tracking id |  -  |
 **400** | Service error relating to getting the group with the given tracking id |  -  |
+**404** | Group not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

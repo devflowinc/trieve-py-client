@@ -6,8 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **datetime** |  | 
+**dataset_id** | **str** |  | 
 **id** | **str** |  | 
 **link** | **str** |  | [optional] 
+**location** | [**GeoInfo**](GeoInfo.md) |  | [optional] 
 **metadata** | **object** |  | [optional] 
 **qdrant_point_id** | **str** |  | [optional] 
 **tag_set** | **str** |  | [optional] 

@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.7.2"
+    "version": "0.7.6"
   },
   "servers": [
     {
@@ -174,7 +174,7 @@
           "chunk"
         ],
         "summary": "Create or Upsert Chunk or Chunks",
-        "description": "Create or Upsert Chunk or Chunks\n\nCreate a new chunk. If the chunk has the same tracking_id as an existing chunk, the request will fail. Once a chunk is created, it can be searched for using the search endpoint.",
+        "description": "Create or Upsert Chunk or Chunks\n\nCreate a new chunk. If the chunk has the same tracking_id as an existing chunk, the request will fail. Once a chunk is created, it can be searched for using the search endpoint.\nIf uploading in bulk, the maximum amount of chunks that can be uploaded at once is 120 chunks.",
         "operationId": "create_chunk",
         "parameters": [
           {
@@ -497,7 +497,7 @@
         ],
         "summary": "Search",
         "description": "Search\n\nThis route provides the primary search functionality for the API. It can be used to search for chunks by semantic similarity, full-text similarity, or a combination of both. Results' `chunk_html` values will be modified with `<b><mark>` tags for sub-sentence highlighting.",
-        "operationId": "search_chunk",
+        "operationId": "search_chunks",
         "parameters": [
           {
             "name": "TR-Dataset",
@@ -664,6 +664,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Chunk not found"
           }
         },
         "security": [
@@ -774,6 +777,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Chunk not found"
           }
         },
         "security": [
@@ -1417,6 +1423,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Group not found"
           }
         },
         "security": [
@@ -1476,6 +1485,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Group not found"
           }
         },
         "security": [
@@ -1711,6 +1723,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Group not found"
           }
         },
         "security": [
@@ -1836,6 +1851,134 @@
           },
           "400": {
             "description": "Service error relating to getting the groups that the chunk is in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": [
+              "readonly"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/chunks": {
+      "post": {
+        "tags": [
+          "chunk"
+        ],
+        "summary": "Get Chunks By Ids",
+        "description": "Get Chunks By Ids\n\nGet multiple chunks by multiple ids.",
+        "operationId": "get_chunks_by_ids",
+        "parameters": [
+          {
+            "name": "TR-Dataset",
+            "in": "header",
+            "description": "The dataset id to use for the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "JSON request payload to get the chunks in the request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetChunksData"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "chunks with the id that you were searching for",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChunkMetadata"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Service error relating to fidning a chunk by tracking_id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": [
+              "readonly"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/chunks/tracking": {
+      "post": {
+        "tags": [
+          "chunk"
+        ],
+        "summary": "Get Chunks By TrackingIds",
+        "description": "Get Chunks By TrackingIds\n\nGet multiple chunks by ids.",
+        "operationId": "get_chunks_by_tracking_ids",
+        "parameters": [
+          {
+            "name": "TR-Dataset",
+            "in": "header",
+            "description": "The dataset id to use for the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "JSON request payload to get the chunks in the request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTrackingChunksData"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "chunk with the id that you were searching for",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChunkMetadata"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Service error relating to fidning a chunk by tracking_id",
             "content": {
               "application/json": {
                 "schema": {
@@ -4083,6 +4226,14 @@
             "description": "Link to the chunk. This can also be any string. Frequently, this is a link to the source of the chunk. The link value will not affect the embedding creation.",
             "nullable": true
           },
+          "location": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoInfo"
+              }
+            ],
+            "nullable": true
+          },
           "metadata": {
             "description": "Metadata is a JSON object which can be used to filter chunks. This is useful for when you want to filter chunks by arbitrary metadata. Unlike with tag filtering, there is a performance hit for filtering on metadata.",
             "nullable": true
@@ -4368,6 +4519,14 @@
           },
           "link": {
             "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoInfo"
+              }
+            ],
             "nullable": true
           },
           "metadata": {
@@ -4742,11 +4901,6 @@
             "description": "The delimiters to use for highlighting the citations. If this is not included, the default delimiters will be used. Default is `[\".\", \"!\", \"?\", \"\\n\", \"\\t\", \",\"]`.",
             "nullable": true
           },
-          "model": {
-            "type": "string",
-            "description": "The model to use for the assistant's messages. This can be any model from the openrouter model list. If no model is provided, gpt-3.5-turbo will be used.",
-            "nullable": true
-          },
           "new_message_content": {
             "type": "string",
             "description": "The content of the user message to attach to the topic and then generate an assistant message in response to."
@@ -4787,11 +4941,6 @@
           "first_user_message": {
             "type": "string",
             "description": "The first message which will belong to the topic. The topic name is generated based on this message similar to how it works in the OpenAI chat UX if a name is not explicitly provided on the name request body key.",
-            "nullable": true
-          },
-          "model": {
-            "type": "string",
-            "description": "The model to use for the assistant's messages. This can be any model from the openrouter model list. If no model is provided, the gpt-3.5-turbo will be used.",
             "nullable": true
           },
           "name": {
@@ -5017,11 +5166,6 @@
             "format": "int32",
             "description": "The sort order of the message to edit."
           },
-          "model": {
-            "type": "string",
-            "description": "The model to use for the assistant generative inferences. This can be any model from the openrouter model list. If no model is provided, the gpt-3.5-turbo will be used.~",
-            "nullable": true
-          },
           "new_message_content": {
             "type": "string",
             "description": "The new content of the message to replace the old content with."
@@ -5124,6 +5268,30 @@
           "field": {
             "type": "string",
             "description": "Field is the name of the field to filter on. The field value will be used to check for an exact substring match on the metadata values for each existing chunk. This is useful for when you want to filter chunks by arbitrary metadata. To access fields inside of the metadata that you provide with the card, prefix the field name with `metadata.`."
+          },
+          "geo_bounding_box": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocationBoundingBox"
+              }
+            ],
+            "nullable": true
+          },
+          "geo_polygon": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocationPolygon"
+              }
+            ],
+            "nullable": true
+          },
+          "geo_radius": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LocationRadius"
+              }
+            ],
+            "nullable": true
           },
           "match": {
             "type": "array",
@@ -5291,11 +5459,6 @@
             },
             "description": "The ids of the chunks to be retrieved and injected into the context window for RAG."
           },
-          "model": {
-            "type": "string",
-            "description": "The model to use for the chat. This can be any model from the openrouter model list. If no model is provided, gpt-3.5-turbo will be used.",
-            "nullable": true
-          },
           "prev_messages": {
             "type": "array",
             "items": {
@@ -5327,6 +5490,48 @@
           ],
           "prompt": "Respond to the instruction and include the doc numbers that you used in square brackets at the end of the sentences that you used the docs for:",
           "stream_response": true
+        }
+      },
+      "GeoInfo": {
+        "type": "object",
+        "required": [
+          "lat",
+          "lon"
+        ],
+        "properties": {
+          "lat": {
+            "$ref": "#/components/schemas/GeoTypes"
+          },
+          "lon": {
+            "$ref": "#/components/schemas/GeoTypes"
+          }
+        }
+      },
+      "GeoTypes": {
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ]
+      },
+      "GetChunksData": {
+        "type": "object",
+        "required": [
+          "ids"
+        ],
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
         }
       },
       "GetEventsData": {
@@ -5372,6 +5577,20 @@
             "items": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        }
+      },
+      "GetTrackingChunksData": {
+        "type": "object",
+        "required": [
+          "tracking_ids"
+        ],
+        "properties": {
+          "tracking_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           }
         }
@@ -5518,6 +5737,61 @@
             "type": "integer",
             "format": "int32",
             "description": "The role the user will have in the organization. 0 = User, 1 = Admin, 2 = Owner."
+          }
+        }
+      },
+      "LocationBoundingBox": {
+        "type": "object",
+        "required": [
+          "top_left",
+          "bottom_right"
+        ],
+        "properties": {
+          "bottom_right": {
+            "$ref": "#/components/schemas/GeoInfo"
+          },
+          "top_left": {
+            "$ref": "#/components/schemas/GeoInfo"
+          }
+        }
+      },
+      "LocationPolygon": {
+        "type": "object",
+        "required": [
+          "exterior"
+        ],
+        "properties": {
+          "exterior": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeoInfo"
+            }
+          },
+          "interior": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/GeoInfo"
+              }
+            },
+            "nullable": true
+          }
+        }
+      },
+      "LocationRadius": {
+        "type": "object",
+        "required": [
+          "center",
+          "radius"
+        ],
+        "properties": {
+          "center": {
+            "$ref": "#/components/schemas/GeoInfo"
+          },
+          "radius": {
+            "type": "number",
+            "format": "double"
           }
         }
       },
@@ -5737,6 +6011,10 @@
           {
             "type": "number",
             "format": "double"
+          },
+          {
+            "type": "integer",
+            "format": "int64"
           }
         ]
       },
@@ -5902,11 +6180,6 @@
               "type": "string"
             },
             "description": "The delimiters to use for highlighting the citations. If this is not included, the default delimiters will be used. Default is `[\".\", \"!\", \"?\", \"\\n\", \"\\t\", \",\"]`.",
-            "nullable": true
-          },
-          "model": {
-            "type": "string",
-            "description": "The model to use for the assistant generative inferences. This can be any model from the openrouter model list. If no model is provided, the gpt-3.5-turbo will be used.~",
             "nullable": true
           },
           "stream_response": {
@@ -6507,6 +6780,7 @@
           "id",
           "created_at",
           "updated_at",
+          "dataset_id",
           "weight"
         ],
         "properties": {
@@ -6514,12 +6788,24 @@
             "type": "string",
             "format": "date-time"
           },
+          "dataset_id": {
+            "type": "string",
+            "format": "uuid"
+          },
           "id": {
             "type": "string",
             "format": "uuid"
           },
           "link": {
             "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoInfo"
+              }
+            ],
             "nullable": true
           },
           "metadata": {
@@ -6975,6 +7261,14 @@
           "link": {
             "type": "string",
             "description": "Link of the chunk you want to update. This can also be any string. Frequently, this is a link to the source of the chunk. The link value will not affect the embedding creation. If no link is provided, the existing link will be used.",
+            "nullable": true
+          },
+          "location": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoInfo"
+              }
+            ],
             "nullable": true
           },
           "metadata": {
