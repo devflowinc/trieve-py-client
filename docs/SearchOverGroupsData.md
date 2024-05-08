@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filters** | [**ChunkFilter**](ChunkFilter.md) |  | [optional] 
 **get_collisions** | **bool** | Set get_collisions to true to get the collisions for each chunk. This will only apply if environment variable COLLISIONS_ENABLED is set to true. | [optional] 
+**get_total_pages** | **bool** | Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance. | [optional] 
 **group_size** | **int** | Group_size is the number of chunks to fetch for each group. The default is 3. If a group has less than group_size chunks, all chunks will be returned. If this is set to a large number, we recommend setting slim_chunks to true to avoid returning the content and chunk_html of the chunks so as to lower the amount of time required for content download and serialization. | [optional] 
 **highlight_delimiters** | **List[str]** | Set highlight_delimiters to a list of strings to use as delimiters for highlighting. If not specified, this defaults to [\&quot;?\&quot;, \&quot;,\&quot;, \&quot;.\&quot;, \&quot;!\&quot;]. | [optional] 
 **highlight_results** | **bool** | Set highlight_results to true to highlight the results. If not specified, this defaults to true. | [optional] 

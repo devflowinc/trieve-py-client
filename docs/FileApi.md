@@ -252,6 +252,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The signed s3 url corresponding to the file_id requested |  -  |
 **400** | Service error relating to finding the file |  -  |
+**404** | File not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

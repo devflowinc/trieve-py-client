@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.7.6"
+    "version": "0.8.0"
   },
   "servers": [
     {
@@ -666,7 +666,14 @@
             }
           },
           "404": {
-            "description": "Chunk not found"
+            "description": "Chunk not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -779,7 +786,14 @@
             }
           },
           "404": {
-            "description": "Chunk not found"
+            "description": "Chunk not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1425,7 +1439,14 @@
             }
           },
           "404": {
-            "description": "Group not found"
+            "description": "Group not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1487,7 +1508,14 @@
             }
           },
           "404": {
-            "description": "Group not found"
+            "description": "Group not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1725,7 +1753,14 @@
             }
           },
           "404": {
-            "description": "Group not found"
+            "description": "Group not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1860,7 +1895,14 @@
             }
           },
           "404": {
-            "description": "Group not found"
+            "description": "Group not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1925,6 +1967,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Any one of the specified chunks not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1979,6 +2031,16 @@
           },
           "400": {
             "description": "Service error relating to fidning a chunk by tracking_id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Any one of the specified chunks not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2665,6 +2727,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "File not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -3315,6 +3387,16 @@
           },
           "400": {
             "description": "Service error relating to finding the organization by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Organization not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -4841,6 +4923,11 @@
             "type": "string",
             "description": "Optional tracking id to assign to the chunk_group. This is a unique identifier for the chunk_group.",
             "nullable": true
+          },
+          "upsert_by_tracking_id": {
+            "type": "boolean",
+            "description": "Upsert when a chunk_group with the same tracking_id exists. By default this is false, and the request will fail if a chunk_group with the same tracking_id exists. If this is true, the chunk_group will be updated if a chunk_group with the same tracking_id exists.",
+            "nullable": true
           }
         }
       },
@@ -5923,9 +6010,14 @@
           "dataset_count",
           "user_count",
           "file_storage",
-          "message_count"
+          "message_count",
+          "chunk_count"
         ],
         "properties": {
+          "chunk_count": {
+            "type": "integer",
+            "format": "int32"
+          },
           "dataset_count": {
             "type": "integer",
             "format": "int32"
@@ -5952,6 +6044,7 @@
           }
         },
         "example": {
+          "chunk_count": 1000,
           "dataset_count": 1,
           "file_storage": 512,
           "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
@@ -6303,6 +6396,11 @@
             "description": "Set get_collisions to true to get the collisions for each chunk. This will only apply if environment variable COLLISIONS_ENABLED is set to true.",
             "nullable": true
           },
+          "get_total_pages": {
+            "type": "boolean",
+            "description": "Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance.",
+            "nullable": true
+          },
           "highlight_delimiters": {
             "type": "array",
             "items": {
@@ -6459,6 +6557,11 @@
             "description": "Set get_collisions to true to get the collisions for each chunk. This will only apply if environment variable COLLISIONS_ENABLED is set to true.",
             "nullable": true
           },
+          "get_total_pages": {
+            "type": "boolean",
+            "description": "Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance.",
+            "nullable": true
+          },
           "group_size": {
             "type": "integer",
             "format": "int32",
@@ -6589,6 +6692,11 @@
                 "$ref": "#/components/schemas/ChunkFilter"
               }
             ],
+            "nullable": true
+          },
+          "get_total_pages": {
+            "type": "boolean",
+            "description": "Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance.",
             "nullable": true
           },
           "group_id": {

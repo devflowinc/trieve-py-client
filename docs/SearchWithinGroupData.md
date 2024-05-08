@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date_bias** | **bool** | Set date_bias to true to bias search results towards more recent chunks. This will work best in hybrid search mode. | [optional] 
 **filters** | [**ChunkFilter**](ChunkFilter.md) |  | [optional] 
+**get_total_pages** | **bool** | Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance. | [optional] 
 **group_id** | **str** | Group specifies the group to search within. Results will only consist of chunks which are bookmarks within the specified group. | [optional] 
 **group_tracking_id** | **str** | Group_tracking_id specifies the group to search within by tracking id. Results will only consist of chunks which are bookmarks within the specified group. If both group_id and group_tracking_id are provided, group_id will be used. | [optional] 
 **highlight_delimiters** | **List[str]** | Set highlight_delimiters to a list of strings to use as delimiters for highlighting. If not specified, this defaults to [\&quot;?\&quot;, \&quot;,\&quot;, \&quot;.\&quot;, \&quot;!\&quot;]. | [optional] 

@@ -672,6 +672,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | chunks with the id that you were searching for |  -  |
 **400** | Service error relating to fidning a chunk by tracking_id |  -  |
+**404** | Any one of the specified chunks not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -755,6 +756,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | chunk with the id that you were searching for |  -  |
 **400** | Service error relating to fidning a chunk by tracking_id |  -  |
+**404** | Any one of the specified chunks not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

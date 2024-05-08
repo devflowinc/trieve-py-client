@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**chunk_count** | **int** |  | 
 **dataset_count** | **int** |  | 
 **file_storage** | **int** |  | 
 **id** | **str** |  | 

@@ -254,6 +254,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Organization with the id that was requested |  -  |
 **400** | Service error relating to finding the organization by id |  -  |
+**404** | Organization not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name to assign to the chunk_group. Does not need to be unique. | 
 **tag_set** | **List[str]** | Optional tags to assign to the chunk_group. This is a list of strings that can be used to categorize the chunks inside the chunk_group. | [optional] 
 **tracking_id** | **str** | Optional tracking id to assign to the chunk_group. This is a unique identifier for the chunk_group. | [optional] 
+**upsert_by_tracking_id** | **bool** | Upsert when a chunk_group with the same tracking_id exists. By default this is false, and the request will fail if a chunk_group with the same tracking_id exists. If this is true, the chunk_group will be updated if a chunk_group with the same tracking_id exists. | [optional] 
 
 ## Example
 
