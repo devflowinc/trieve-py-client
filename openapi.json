@@ -12,7 +12,7 @@
       "name": "BSL",
       "url": "https://github.com/devflowinc/trieve/blob/main/LICENSE.txt"
     },
-    "version": "0.8.0"
+    "version": "0.8.2"
   },
   "servers": [
     {
@@ -4266,11 +4266,13 @@
       },
       "ChunkData": {
         "type": "object",
+        "required": [
+          "chunk_html"
+        ],
         "properties": {
           "chunk_html": {
             "type": "string",
-            "description": "HTML content of the chunk. This can also be plaintext. The innerText of the HTML will be used to create the embedding vector. The point of using HTML is for convienience, as some users have applications where users submit HTML content.",
-            "nullable": true
+            "description": "HTML content of the chunk. This can also be plaintext. The innerText of the HTML will be used to create the embedding vector. The point of using HTML is for convienience, as some users have applications where users submit HTML content."
           },
           "chunk_vector": {
             "type": "array",
@@ -4573,7 +4575,6 @@
         "type": "object",
         "required": [
           "id",
-          "content",
           "created_at",
           "updated_at",
           "dataset_id",
@@ -4583,9 +4584,6 @@
           "chunk_html": {
             "type": "string",
             "nullable": true
-          },
-          "content": {
-            "type": "string"
           },
           "created_at": {
             "type": "string",
@@ -4643,7 +4641,6 @@
         },
         "example": {
           "chunk_html": "<p>Hello, world!</p>",
-          "content": "Hello, world!",
           "created_at": "2021-01-01T00:00:00",
           "dataset_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
           "id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
@@ -4663,7 +4660,6 @@
         "type": "object",
         "required": [
           "id",
-          "content",
           "created_at",
           "updated_at",
           "dataset_id",
@@ -4674,9 +4670,6 @@
           "chunk_html": {
             "type": "string",
             "nullable": true
-          },
-          "content": {
-            "type": "string"
           },
           "created_at": {
             "type": "string",
@@ -5761,6 +5754,14 @@
             "type": "string",
             "format": "uuid"
           },
+          "group_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "group_tracking_id": {
+            "type": "string",
+            "nullable": true
+          },
           "metadata": {
             "type": "array",
             "items": {
@@ -5770,6 +5771,8 @@
         },
         "example": {
           "group_id": "e3e3e3e3-e3e3-e3e3-e3e3-e3e3e3e3e3e3",
+          "group_name": "Example Group",
+          "group_tracking_id": "example_tracking_id",
           "metadata": [
             {
               "metadata": [
@@ -6170,7 +6173,7 @@
           },
           "slim_chunks": {
             "type": "boolean",
-            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
+            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement (typicall 10-50ms). Default is false.",
             "nullable": true
           },
           "strategy": {
@@ -6246,7 +6249,7 @@
           },
           "slim_chunks": {
             "type": "boolean",
-            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
+            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement (typicall 10-50ms). Default is false.",
             "nullable": true
           },
           "strategy": {
@@ -6378,11 +6381,6 @@
           "query"
         ],
         "properties": {
-          "date_bias": {
-            "type": "boolean",
-            "description": "Set date_bias to true to bias search results towards more recent chunks. This will work best in hybrid search mode.",
-            "nullable": true
-          },
           "filters": {
             "allOf": [
               {
@@ -6398,7 +6396,7 @@
           },
           "get_total_pages": {
             "type": "boolean",
-            "description": "Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance.",
+            "description": "Get total page count for the query accounting for the applied filters. Defaults to false, but can be set to true when the latency penalty is acceptable (typically 50-200ms).",
             "nullable": true
           },
           "highlight_delimiters": {
@@ -6411,7 +6409,7 @@
           },
           "highlight_results": {
             "type": "boolean",
-            "description": "Set highlight_results to true to highlight the results. If not specified, this defaults to true.",
+            "description": "Set highlight_results to false for a slight latency improvement (1-10ms). If not specified, this defaults to true. This will add <b><mark> tags to the chunk_html of the chunks to highlight matching sub-sentences.",
             "nullable": true
           },
           "page": {
@@ -6432,6 +6430,12 @@
             "type": "string",
             "description": "Query is the search query. This can be any string. The query will be used to create an embedding vector and/or SPLADE vector which will be used to find the result set."
           },
+          "recency_bias": {
+            "type": "number",
+            "format": "float",
+            "description": "Recency Bias lets you determine how much of an effect the recency of chunks will have on the search results. If not specified, this defaults to 0.0. We recommend setting this to 1.0 for a gentle reranking of the results, >3.0 for a strong reranking of the results.",
+            "nullable": true
+          },
           "score_threshold": {
             "type": "number",
             "format": "float",
@@ -6444,7 +6448,7 @@
           },
           "slim_chunks": {
             "type": "boolean",
-            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
+            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement (typicall 10-50ms). Default is false.",
             "nullable": true
           },
           "use_weights": {
@@ -6559,7 +6563,7 @@
           },
           "get_total_pages": {
             "type": "boolean",
-            "description": "Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance.",
+            "description": "Get total page count for the query accounting for the applied filters. Defaults to false, but can be set to true when the latency penalty is acceptable (typically 50-200ms).",
             "nullable": true
           },
           "group_size": {
@@ -6579,7 +6583,7 @@
           },
           "highlight_results": {
             "type": "boolean",
-            "description": "Set highlight_results to true to highlight the results. If not specified, this defaults to true.",
+            "description": "Set highlight_results to false for a slight latency improvement (1-10ms). If not specified, this defaults to true. This will add <b><mark> tags to the chunk_html of the chunks to highlight matching sub-sentences.",
             "nullable": true
           },
           "page": {
@@ -6612,7 +6616,7 @@
           },
           "slim_chunks": {
             "type": "boolean",
-            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
+            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement (typicall 10-50ms). Default is false.",
             "nullable": true
           }
         }
@@ -6681,11 +6685,6 @@
           "search_type"
         ],
         "properties": {
-          "date_bias": {
-            "type": "boolean",
-            "description": "Set date_bias to true to bias search results towards more recent chunks. This will work best in hybrid search mode.",
-            "nullable": true
-          },
           "filters": {
             "allOf": [
               {
@@ -6696,7 +6695,7 @@
           },
           "get_total_pages": {
             "type": "boolean",
-            "description": "Get total page count for the query accounting for the applied filters. Defaults to true, but can be set to false to reduce latency in edge cases performance.",
+            "description": "Get total page count for the query accounting for the applied filters. Defaults to false, but can be set to true when the latency penalty is acceptable (typically 50-200ms).",
             "nullable": true
           },
           "group_id": {
@@ -6720,7 +6719,7 @@
           },
           "highlight_results": {
             "type": "boolean",
-            "description": "Set highlight_results to true to highlight the results. If not specified, this defaults to true.",
+            "description": "Set highlight_results to false for a slight latency improvement (1-10ms). If not specified, this defaults to true. This will add <b><mark> tags to the chunk_html of the chunks to highlight matching sub-sentences.",
             "nullable": true
           },
           "page": {
@@ -6741,6 +6740,12 @@
             "type": "string",
             "description": "The query is the search query. This can be any string. The query will be used to create an embedding vector and/or SPLADE vector which will be used to find the result set."
           },
+          "recency_bias": {
+            "type": "number",
+            "format": "float",
+            "description": "Recency Bias lets you determine how much of an effect the recency of chunks will have on the search results. If not specified, this defaults to 0.0.",
+            "nullable": true
+          },
           "score_threshold": {
             "type": "number",
             "format": "float",
@@ -6753,7 +6758,7 @@
           },
           "slim_chunks": {
             "type": "boolean",
-            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement. Default is false.",
+            "description": "Set slim_chunks to true to avoid returning the content and chunk_html of the chunks. This is useful for when you want to reduce amount of data over the wire for latency improvement (typicall 10-50ms). Default is false.",
             "nullable": true
           },
           "use_weights": {

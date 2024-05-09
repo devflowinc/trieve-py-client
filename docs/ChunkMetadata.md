@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chunk_html** | **str** |  | [optional] 
-**content** | **str** |  | 
 **created_at** | **datetime** |  | 
 **dataset_id** | **str** |  | 
 **id** | **str** |  | 
