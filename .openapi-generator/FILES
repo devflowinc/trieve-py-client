@@ -7,6 +7,7 @@ docs/AddChunkToGroupData.md
 docs/ApiKeyDTO.md
 docs/AuthApi.md
 docs/AuthQuery.md
+docs/AutocompleteData.md
 docs/BatchQueuedChunkResponse.md
 docs/BookmarkData.md
 docs/BookmarkGroupResult.md
@@ -18,8 +19,10 @@ docs/ChunkGroup.md
 docs/ChunkGroupAndFile.md
 docs/ChunkGroupApi.md
 docs/ChunkMetadata.md
+docs/ChunkMetadataTypes.md
 docs/ChunkMetadataWithScore.md
 docs/ClientDatasetConfiguration.md
+docs/ContentChunkMetadata.md
 docs/CreateChunkData.md
 docs/CreateChunkGroupData.md
 docs/CreateDatasetRequest.md
@@ -31,6 +34,7 @@ docs/DatasetAndUsage.md
 docs/DatasetApi.md
 docs/DatasetDTO.md
 docs/DatasetUsageCount.md
+docs/DateRange.md
 docs/DeleteTopicData.md
 docs/DeleteUserApiKeyRequest.md
 docs/EditMessageData.md
@@ -51,7 +55,6 @@ docs/GetGroupsForChunksData.md
 docs/GetTrackingChunksData.md
 docs/GroupData.md
 docs/GroupScoreChunk.md
-docs/GroupScoreSlimChunks.md
 docs/HealthApi.md
 docs/InvitationApi.md
 docs/InvitationData.md
@@ -71,16 +74,12 @@ docs/RecommendGroupChunksRequest.md
 docs/RegenerateMessageData.md
 docs/ReturnQueuedChunk.md
 docs/ScoreChunkDTO.md
-docs/ScoreSlimChunks.md
 docs/SearchChunkData.md
 docs/SearchChunkQueryResponseBody.md
 docs/SearchOverGroupsData.md
 docs/SearchOverGroupsResults.md
-docs/SearchOverGroupsSlimResults.md
-docs/SearchSlimChunkQueryResponseBody.md
 docs/SearchWithinGroupData.md
 docs/SearchWithinGroupResults.md
-docs/SearchWithinGroupSlimResults.md
 docs/SetUserApiKeyRequest.md
 docs/SetUserApiKeyResponse.md
 docs/SingleQueuedChunkResponse.md
@@ -113,6 +112,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_autocomplete_data.py
+test/test_chunk_metadata_types.py
+test/test_content_chunk_metadata.py
+test/test_date_range.py
 tox.ini
 trieve_py_client/__init__.py
 trieve_py_client/api/__init__.py
@@ -137,6 +140,7 @@ trieve_py_client/models/__init__.py
 trieve_py_client/models/add_chunk_to_group_data.py
 trieve_py_client/models/api_key_dto.py
 trieve_py_client/models/auth_query.py
+trieve_py_client/models/autocomplete_data.py
 trieve_py_client/models/batch_queued_chunk_response.py
 trieve_py_client/models/bookmark_data.py
 trieve_py_client/models/bookmark_group_result.py
@@ -146,8 +150,10 @@ trieve_py_client/models/chunk_filter.py
 trieve_py_client/models/chunk_group.py
 trieve_py_client/models/chunk_group_and_file.py
 trieve_py_client/models/chunk_metadata.py
+trieve_py_client/models/chunk_metadata_types.py
 trieve_py_client/models/chunk_metadata_with_score.py
 trieve_py_client/models/client_dataset_configuration.py
+trieve_py_client/models/content_chunk_metadata.py
 trieve_py_client/models/create_chunk_data.py
 trieve_py_client/models/create_chunk_group_data.py
 trieve_py_client/models/create_dataset_request.py
@@ -158,6 +164,7 @@ trieve_py_client/models/dataset.py
 trieve_py_client/models/dataset_and_usage.py
 trieve_py_client/models/dataset_dto.py
 trieve_py_client/models/dataset_usage_count.py
+trieve_py_client/models/date_range.py
 trieve_py_client/models/delete_topic_data.py
 trieve_py_client/models/delete_user_api_key_request.py
 trieve_py_client/models/edit_message_data.py
@@ -176,7 +183,6 @@ trieve_py_client/models/get_groups_for_chunks_data.py
 trieve_py_client/models/get_tracking_chunks_data.py
 trieve_py_client/models/group_data.py
 trieve_py_client/models/group_score_chunk.py
-trieve_py_client/models/group_score_slim_chunks.py
 trieve_py_client/models/invitation_data.py
 trieve_py_client/models/location_bounding_box.py
 trieve_py_client/models/location_polygon.py
@@ -192,16 +198,12 @@ trieve_py_client/models/recommend_group_chunks_request.py
 trieve_py_client/models/regenerate_message_data.py
 trieve_py_client/models/return_queued_chunk.py
 trieve_py_client/models/score_chunk_dto.py
-trieve_py_client/models/score_slim_chunks.py
 trieve_py_client/models/search_chunk_data.py
 trieve_py_client/models/search_chunk_query_response_body.py
 trieve_py_client/models/search_over_groups_data.py
 trieve_py_client/models/search_over_groups_results.py
-trieve_py_client/models/search_over_groups_slim_results.py
-trieve_py_client/models/search_slim_chunk_query_response_body.py
 trieve_py_client/models/search_within_group_data.py
 trieve_py_client/models/search_within_group_results.py
-trieve_py_client/models/search_within_group_slim_results.py
 trieve_py_client/models/set_user_api_key_request.py
 trieve_py_client/models/set_user_api_key_response.py
 trieve_py_client/models/single_queued_chunk_response.py

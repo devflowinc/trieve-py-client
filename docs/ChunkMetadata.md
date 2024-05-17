@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | 
 **dataset_id** | **str** |  | 
 **id** | **str** |  | 
+**image_urls** | **List[Optional[str]]** |  | [optional] 
 **link** | **str** |  | [optional] 
 **location** | [**GeoInfo**](GeoInfo.md) |  | [optional] 
 **metadata** | **object** |  | [optional] 

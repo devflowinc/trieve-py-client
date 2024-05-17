@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | [**List[ChunkMetadata]**](ChunkMetadata.md) |  | 
+**metadata** | [**List[ChunkMetadataTypes]**](ChunkMetadataTypes.md) |  | 
 **score** | **float** |  | 
 
 ## Example

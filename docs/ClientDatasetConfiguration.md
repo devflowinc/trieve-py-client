@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **file_name_key** | **str** |  | 
 **filter_items** | **object** |  | [optional] 
 **frontmatter_vals** | **str** |  | [optional] 
-**image_metadata_key** | **str** |  | 
 **image_range_end_key** | **str** |  | [optional] 
 **image_range_start_key** | **str** |  | [optional] 
 **lines_before_show_more** | **int** |  | [optional] 

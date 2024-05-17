@@ -352,7 +352,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_group_by_tracking_id**
-> delete_group_by_tracking_id(tr_dataset, tracking_id)
+> delete_group_by_tracking_id(tr_dataset, tracking_id, delete_chunks)
 
 Delete Group by Tracking ID
 
@@ -390,10 +390,11 @@ with trieve_py_client.ApiClient(configuration) as api_client:
     api_instance = trieve_py_client.ChunkGroupApi(api_client)
     tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
     tracking_id = 'tracking_id_example' # str | Tracking id of the chunk_group to delete
+    delete_chunks = True # bool | Delete the chunks within the group
 
     try:
         # Delete Group by Tracking ID
-        api_instance.delete_group_by_tracking_id(tr_dataset, tracking_id)
+        api_instance.delete_group_by_tracking_id(tr_dataset, tracking_id, delete_chunks)
     except Exception as e:
         print("Exception when calling ChunkGroupApi->delete_group_by_tracking_id: %s\n" % e)
 ```
@@ -407,6 +408,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tr_dataset** | **str**| The dataset id to use for the request | 
  **tracking_id** | **str**| Tracking id of the chunk_group to delete | 
+ **delete_chunks** | **bool**| Delete the chunks within the group | 
 
 ### Return type
 
@@ -927,8 +929,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | JSON body representing the groups which are similar to the positive groups and dissimilar to the negative ones if slim_chunks is false in the request |  -  |
-**206** | JSON body representing the groups which are similar to the positive groups and dissimilar to the negative ones if slim_chunks is false in the request |  -  |
+**200** | JSON body representing the groups which are similar to the positive groups and dissimilar to the negative ones |  -  |
 **400** | Service error relating to to getting similar chunks |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1177,8 +1178,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is false or unspecified in the request body |  -  |
-**206** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is true in the request body |  -  |
+**200** | Group chunks which are similar to the embedding vector of the search query |  -  |
 **400** | Service error relating to searching over groups |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1261,8 +1261,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is false in the request |  -  |
-**206** | Group chunks which are similar to the embedding vector of the search query if slim_chunks is true in the request |  -  |
+**200** | Group chunks which are similar to the embedding vector of the search query |  -  |
 **400** | Service error relating to getting the groups that the chunk is in |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

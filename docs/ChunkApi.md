@@ -4,6 +4,7 @@ All URIs are relative to *https://api.trieve.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**autocomplete**](ChunkApi.md#autocomplete) | **POST** /api/chunk/autocomplete | Autocomplete
 [**create_chunk**](ChunkApi.md#create_chunk) | **POST** /api/chunk | Create or Upsert Chunk or Chunks
 [**create_suggested_queries_handler**](ChunkApi.md#create_suggested_queries_handler) | **POST** /api/chunk/gen_suggestions | Generate suggested queries
 [**delete_chunk**](ChunkApi.md#delete_chunk) | **DELETE** /api/chunk/{chunk_id} | Delete Chunk
@@ -18,6 +19,89 @@ Method | HTTP request | Description
 [**update_chunk**](ChunkApi.md#update_chunk) | **PUT** /api/chunk | Update Chunk
 [**update_chunk_by_tracking_id**](ChunkApi.md#update_chunk_by_tracking_id) | **PUT** /api/chunk/tracking_id/update | Update Chunk By Tracking Id
 
+
+# **autocomplete**
+> SearchChunkQueryResponseBody autocomplete(tr_dataset, autocomplete_data)
+
+Autocomplete
+
+Autocomplete  This route provides the primary autocomplete functionality for the API. This prioritize prefix matching with semantic or full-text search.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+
+```python
+import trieve_py_client
+from trieve_py_client.models.autocomplete_data import AutocompleteData
+from trieve_py_client.models.search_chunk_query_response_body import SearchChunkQueryResponseBody
+from trieve_py_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.trieve.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = trieve_py_client.Configuration(
+    host = "https://api.trieve.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with trieve_py_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = trieve_py_client.ChunkApi(api_client)
+    tr_dataset = 'tr_dataset_example' # str | The dataset id to use for the request
+    autocomplete_data = trieve_py_client.AutocompleteData() # AutocompleteData | JSON request payload to semantically search for chunks (chunks)
+
+    try:
+        # Autocomplete
+        api_response = api_instance.autocomplete(tr_dataset, autocomplete_data)
+        print("The response of ChunkApi->autocomplete:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ChunkApi->autocomplete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tr_dataset** | **str**| The dataset id to use for the request | 
+ **autocomplete_data** | [**AutocompleteData**](AutocompleteData.md)| JSON request payload to semantically search for chunks (chunks) | 
+
+### Return type
+
+[**SearchChunkQueryResponseBody**](SearchChunkQueryResponseBody.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Chunks with embedding vectors which are similar to those in the request body |  -  |
+**400** | Service error relating to searching |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_chunk**
 > ReturnQueuedChunk create_chunk(tr_dataset, create_chunk_data)
@@ -838,8 +922,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chunks with embedding vectors which are similar to positives and dissimilar to negatives if slim_chunks is false in the request |  -  |
-**206** | Chunks with embedding vectors which are similar to positives and dissimilar to negatives if slim_chunks is true in the request |  -  |
+**200** | Chunks with embedding vectors which are similar to positives and dissimilar to negatives |  -  |
 **400** | Service error relating to to getting similar chunks |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -922,8 +1005,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chunks with embedding vectors which are similar to those in the request body if slim_chunks is false or not specified in the request body |  -  |
-**206** | Chunks with embedding vectors which are similar to those in the request body if slim_chunks is true in the request body |  -  |
+**200** | Chunks with embedding vectors which are similar to those in the request body |  -  |
 **400** | Service error relating to searching |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
